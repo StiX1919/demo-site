@@ -1,0 +1,37 @@
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a0d813;
+    height: 80px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  .hamBar {
+      height: 80px;
+      display: none;
+  }
+
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+
+  @media screen and (max-width: 990px) {
+  .App-title{
+    display: none;
+  }
+  .hamBar{
+    display: block;
+  }
+}
