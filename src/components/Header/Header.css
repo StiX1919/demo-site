@@ -21,11 +21,37 @@
       display: none;
   }
 
+  .dropdownMenu {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    animation: dropdownMenu .5s forwards;
+    z-index: -1
+  }
+  .menu-Closed {
+    display: none
+  }
+  .nav-link {
+      width: 100px;
+      color: black;
+      border-bottom: solid black 2px;
+      height: 20px;
+      background: #a0d813
+  }
+
   @keyframes App-logo-spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
   
+  @keyframes dropdownMenu {
+      from{
+        top: 0px
+      }
+      to {
+        top: 119px
+      }
+  }
 
   @media screen and (max-width: 990px) {
   .App-title{
