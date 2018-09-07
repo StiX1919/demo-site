@@ -7,6 +7,8 @@ import {HashRouter} from 'react-router-dom'
 
 import Header from './components/Header/Header'
 
+import mainRoutes from './routers/mainRouter'
+
 class App extends Component {
 
 
@@ -15,7 +17,7 @@ class App extends Component {
       <HashRouter>
         <div className="App">
           <Header />
-          
+          {mainRoutes}
         </div>
       </HashRouter>
     );

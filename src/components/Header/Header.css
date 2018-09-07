@@ -14,7 +14,7 @@
   }
   
   .App-title {
-    font-size: 1.5em;
+    display: flex
   }
   .hamBar {
       height: 80px;
@@ -26,7 +26,8 @@
     right: 0px;
     top: 0px;
     animation: dropdownMenu .5s forwards;
-    z-index: -1
+    z-index: -1;
+    display: none
   }
   .menu-Closed {
     display: none
@@ -34,9 +35,6 @@
   .nav-link {
       width: 100px;
       color: black;
-      border-bottom: solid black 2px;
-      height: 20px;
-      background: #a0d813
   }
 
   @keyframes App-logo-spin {
@@ -46,7 +44,7 @@
   
   @keyframes dropdownMenu {
       from{
-        top: 0px
+        top: -40px
       }
       to {
         top: 119px
@@ -59,5 +57,24 @@
   }
   .hamBar{
     display: block;
+  }
+  .nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: solid black 2px;
+    background: #a0d813;
+    width: 150px;
+
+    height: 50px;
+    font-size: 30px
+  }
+  .dropdownMenu {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    animation: dropdownMenu .5s forwards;
+    z-index: -1;
+    display: block
   }
 }
