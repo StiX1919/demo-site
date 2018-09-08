@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import axios from 'axios'
+
+import { Link } from 'react-router-dom'
 import './Header.css';
 
 class App extends Component {
@@ -20,7 +22,7 @@ class App extends Component {
   render() {
     let navLinks = this.state.links.map(link => {
         return (
-            <h4 className='nav-link'>{link}</h4>
+            <Link to={`/${link}`}><h4 className='nav-link'>{link}</h4></Link>
         )
     })
     return (
