@@ -8,5 +8,6 @@ export default (
     <Switch>
         <Route exact path='/' component={Landing}/>
         <Route path='/Home' component={Landing}/>
-    </Switch>
-)
+        </Switch>
+    )
+    // <Route path='/CharacterSelect' component={CharacterSelect}/>
