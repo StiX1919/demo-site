@@ -11,3 +11,4 @@ export default (
         </Switch>
     )
     // <Route path='/CharacterSelect' component={CharacterSelect}/>
+    // <Route path='/CreateCharacter' component={CreateCharacter}/>
