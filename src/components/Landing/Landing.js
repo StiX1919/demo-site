@@ -4,8 +4,7 @@ import './Landing.css';
 import axios from 'axios'
 class Landing extends Component {
 
-  async userLogin() {
-    await axios.post('/api/routeUpdate', {path: '/Home'})
+  userLogin() {
     window.location.href= 'http://localhost:3001/api/login'
   }
 

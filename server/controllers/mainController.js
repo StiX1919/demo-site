@@ -1,13 +1,13 @@
 module.exports = {
     getClasses: (req, res) => {
-      const dbInstance = req.app.set("db");
+      const dbInstance = req.app.get("db");
   
       dbInstance.getClasses().then(response => {
           return res.status(200).json(response)
       }).catch(console.log)
     },
     getRaces: (req, res) => {
-        const dbInstance = req.app.set("db");
+        const dbInstance = req.app.get("db");
     
         dbInstance.getRaces().then(response => {
             return res.status(200).json(response)
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     createNewHero: (req, res) => {
-        const dbInstance = req.app.set('db');
+        const dbInstance = req.app.get('db');
         console.log('req.body', req.body)
         dbInstance.createNewHero([req.body.name, 
                                     req.body.race, 

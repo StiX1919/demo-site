@@ -96,9 +96,11 @@ passport.deserializeUser(function(obj, done) {
     done(null, obj)
 })
 
-app.get('/api/login', passport.authenticate('auth0', {failureRedirect: `http://localhost:3001/login`}), (req, res) => {
-    res.redirect(`http://localhost:3000/#${place}`)
-})
+app.get('/api/login', passport.authenticate('auth0', {
+        successRedirect: 'http://localhost:3000/#/CharacterSelect', 
+        failureRedirect: `http://localhost:3001/login`
+    }
+))
 
 
 
@@ -125,12 +127,6 @@ app.get('/api/getClasses', getClasses)
 app.get('/api/getRaces', getRaces)
 
 app.post('/api/newHero', createNewHero)
-
-
-app.post('/api/routeUpdate', (req, res) => {
-    place = req.body.path;
-    res.sendStatus(200)
-})
 
 //LISTENING
 app.listen(port, () => {
