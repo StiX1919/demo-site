@@ -10,10 +10,11 @@ require('dotenv').config();
 const Auth0Strategy = require("passport-auth0");
 
 
-const port = 3000;
+const port = 3001;
 
 const app = express();
 
+let place = '/'
 let monsters = [{name: 'Slime', description: 'A small slime, early adventurers thrive off these.', HP: 10, strength: 1, defense: 3, speed: 2, expValue: 10, gold: 2, image: 'http://www.realfast.dk/wp-content/uploads/2017/01/slime-jump.gif'},
 {name: 'Small Goblin', description: 'Small green creature. Not usually feared unless in groups.', HP: 15, strength: 2, defense: 1, speed: 3, expValue: 12, gold: 1, image: 'https://opengameart.org/sites/default/files/Goblin_idle.gif'},
 {name: 'Zombio', description: 'An undead, no one knows why they have risen again.', HP: 20, strength: 3, defense: 0, speed: 1, expValue: 14, gold: 2, image: 'https://i.pinimg.com/originals/2a/99/a8/2a99a878e17b7527ea1f72b7730c6be9.gif'},
@@ -95,7 +96,9 @@ passport.deserializeUser(function(obj, done) {
     done(null, obj)
 })
 
-app.get('/api/login', passport.authenticate('auth0', {successRedirect: 'http://localhost:3001/characters'}))
+app.get('/api/login', passport.authenticate('auth0', {failureRedirect: `http://localhost:3001/login`}), (req, res) => {
+    res.redirect(`http://localhost:3000/#${place}`)
+})
 
 
 
@@ -123,6 +126,11 @@ app.get('/api/getRaces', getRaces)
 
 app.post('/api/newHero', createNewHero)
 
+
+app.post('/api/routeUpdate', (req, res) => {
+    place = req.body.path;
+    res.sendStatus(200)
+})
 
 //LISTENING
 app.listen(port, () => {
