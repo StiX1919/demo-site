@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Landing.css';
 
 import axios from 'axios'
-class Landing extends Component {
+class MegaRPG extends Component {
 
   userLogin() {
     window.location.href= 'http://localhost:3001/api/login'
@@ -18,4 +18,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default MegaRPG;

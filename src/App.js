@@ -9,6 +9,7 @@ import {Provider} from 'react-redux'
 import Header from './components/Header/Header'
 
 import mainRoutes from './routers/mainRouter'
+import GamesRouter from './routers/gamesRouter'
 
 import store from './store'
 
@@ -22,6 +23,7 @@ class App extends Component {
           <div className="App">
             <Header />
             {mainRoutes}
+            {GamesRouter}
           </div>
         </HashRouter>
       </Provider>

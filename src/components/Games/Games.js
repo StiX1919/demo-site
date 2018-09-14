@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom'
-import GamesRouter from '../../routers/gamesRouter'
 
 import axios from 'axios'
 class Games extends Component {
@@ -10,9 +9,6 @@ class Games extends Component {
         this.state = {
             links: ['MegaRPG']
         }
-    }
-    userLogin() {
-        window.location.href= 'http://localhost:3001/api/login'
     }
 
   render() {
@@ -24,9 +20,7 @@ class Games extends Component {
     return (
       <div>
         <h1>Games</h1>
-        <button onClick={() => this.userLogin()} >Login</button>
         {navLinks}
-        {GamesRouter}
       </div>
     );
   }
