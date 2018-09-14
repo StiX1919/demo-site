@@ -10,7 +10,7 @@ class App extends Component {
         super()
         this.state = {
             menu: false,
-            links: ['Home', 'About', 'Contact']
+            links: ['Home', 'About', 'Contact', 'Games']
         }
         this.openMenu = this.openMenu.bind(this)
     }
