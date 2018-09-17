@@ -7,7 +7,7 @@ class Games extends Component {
     constructor(){
         super()
         this.state = {
-            links: ['MegaRPG']
+            links: ['MegaRPG', 'PixelArt']
         }
     }
 
