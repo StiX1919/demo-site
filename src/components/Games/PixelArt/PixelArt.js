@@ -14,11 +14,13 @@ class PixelArt extends Component {
       color: '#FFFFFF',
       height: 20,
       width: 20,
-      pixSize: 10,
+      pixSize: 20,
 
       pixelArr: [],
-      newHeight: 10,
-      newWidth: 10
+      newHeight: 20,
+      newWidth: 20,
+
+      border: true
     }
     this.handleColorChange=this.handleColorChange.bind(this)
     this.modifyPixels = this.modifyPixels.bind(this)
@@ -30,6 +32,7 @@ class PixelArt extends Component {
 
     this.updateTable=this.updateTable.bind(this)
 
+    this.toggleBorder = this.toggleBorder.bind(this)
   }
 
   componentDidMount(){
@@ -101,8 +104,8 @@ class PixelArt extends Component {
   }
 
   handlePixSize(value){
-    if(Number(value) > 10){
-      this.setState({pixSize: 10})
+    if(Number(value) > 20){
+      this.setState({pixSize: 20})
     } else
     this.setState({pixSize: Number(value)})
   }
@@ -115,6 +118,10 @@ class PixelArt extends Component {
       this.modifyPixels()
 
     }
+  }
+
+  toggleBorder(){
+    this.setState({border: !this.state.border})
   }
   
 
@@ -130,8 +137,8 @@ class PixelArt extends Component {
 
         
             <div className='PixelBox'>
-                <div className='columns' style={{width: this.state.pixSize === 10 ? (this.state.pixSize*this.state.width +(this.state.width * (this.state.pixSize / 10))) + 'px' : (this.state.pixSize*this.state.width) + 'px',
-                                                height: this.state.pixSize === 10 ? (this.state.pixSize*this.state.height+(this.state.height * (this.state.pixSize / 10))) + 'px' : (this.state.pixSize*this.state.height) + 'px'}}> 
+                <div className='columns' style={{width: this.state.border ? (this.state.pixSize*this.state.width +(this.state.width * (1))) + 'px' : (this.state.pixSize*this.state.width) + 'px',
+                                                height: this.state.border ? (this.state.pixSize*this.state.height+(this.state.height * (1))) + 'px': (this.state.pixSize*this.state.height) + 'px'}}> 
                     {this.state.pixelArr.map((pix, i, arr) => {
                         return <Pixel key={i} 
                         pixel={pix} 
@@ -141,13 +148,15 @@ class PixelArt extends Component {
                         color={this.state.color}
                         allArr={arr}
                         chooseColor={this.choosePixColor}
+                        border={this.state.border}
                         />
                     })}
                 </div>
                 <div>
                     <h3>Height:</h3><input type='number' value={this.state.newHeight} placeholder={this.state.height} onChange={(e) => this.handleChangeHeight(e.target.value)} onKeyDown={this.updateTable}/>
                     <h3>Width:</h3><input type='number' value={this.state.newWidth} placeholder={this.state.width} onChange={(e) => this.handleChangeWidth(e.target.value)} onKeyDown={this.updateTable}/>
-                    <h3>Pixel Size:</h3><input type='number' value={this.state.pixSize} placeholder={10} onChange={(e) => this.handlePixSize(e.target.value)}/>
+                    <h3>Pixel Size:</h3><input type='number' value={this.state.pixSize} placeholder={20} onChange={(e) => this.handlePixSize(e.target.value)}/>
+                    <button onClick={this.toggleBorder}>Toggle Borders</button>
                 </div>  
             </div>
         
@@ -164,4 +173,7 @@ class PixelArt extends Component {
 // {this.state.widthArr.map((box, i) => {
 //   return <WidthBox key={i} heightArr={this.state.heightArr} pixSize={this.state.pixSize} widthIndex={i} chosenColor={this.state.color}/>
 // })}
+
+// width: this.state.pixSize === 20 ? (this.state.pixSize*this.state.width +(this.state.width * (1))) + 'px' : (this.state.pixSize*this.state.width) + 'px',
+// height: this.state.pixSize === 20 ? (this.state.pixSize*this.state.height+(this.state.height * (1))) + 'px' : (this.state.pixSize*this.state.height) + 'px'
 export default PixelArt;
