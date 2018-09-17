@@ -25,6 +25,5 @@ class Games extends Component {
     );
   }
 }
-//Hello
 
 export default Games;
