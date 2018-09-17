@@ -43,22 +43,22 @@ class CharacterBox extends Component {
     attacking(monster, hero, buffObj) {
         let power = hero.hero_str + buffObj.str - monster.defense
         let newHP = monster.HP -= power
+        if(power < 0){
+            return console.log('no power')
+        }
+        
         if(newHP <= 0) {
             this.props.beatMonster(monster, this.props.exp, this.props.gold)
         } else if(this.state.equipment.weapon !== 'empty'){
             console.log('hit with weapon')
-
             this.props.getWeaponExp(this.state.equipment.weapon, this.props.abilities)
-            let newMon = Object.assign({}, monster, {HP: newHP})
-            
+            let newMon = Object.assign({}, monster, {HP: newHP})       
             this.props.attack(newMon)
         }
         else {
-            let newMon = Object.assign({}, monster, {HP: newHP})
-            
+            let newMon = Object.assign({}, monster, {HP: newHP})  
             this.props.attack(newMon)
         }
-        
     }
 
     openInventory() {
