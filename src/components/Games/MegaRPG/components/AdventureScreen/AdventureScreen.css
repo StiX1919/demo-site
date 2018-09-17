@@ -1,0 +1,21 @@
+.attacks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100px;
+    height: 200px
+  }
+  .attackButtons {
+    height: 30px;
+  }
+  .shop {
+    display: flex
+  }
+
+  .App {
+    display: flex;
+  }
+  
+  .itemsandshop {
+    display: flex
+  }
