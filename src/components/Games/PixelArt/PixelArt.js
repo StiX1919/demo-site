@@ -152,11 +152,12 @@ class PixelArt extends Component {
                         />
                     })}
                 </div>
-                <div>
+                <div className='inpBox'>
                     <h3>Height:</h3><input type='number' value={this.state.newHeight} placeholder={this.state.height} onChange={(e) => this.handleChangeHeight(e.target.value)} onKeyDown={this.updateTable}/>
                     <h3>Width:</h3><input type='number' value={this.state.newWidth} placeholder={this.state.width} onChange={(e) => this.handleChangeWidth(e.target.value)} onKeyDown={this.updateTable}/>
                     <h3>Pixel Size:</h3><input type='number' value={this.state.pixSize} placeholder={20} onChange={(e) => this.handlePixSize(e.target.value)}/>
                     <button onClick={this.toggleBorder}>Toggle Borders</button>
+                    <button onClick={this.toggleBorder}>Submit PixArt</button>
                 </div>  
             </div>
         

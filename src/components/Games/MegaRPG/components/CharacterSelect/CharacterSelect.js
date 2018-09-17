@@ -7,8 +7,8 @@ import {connect} from 'react-redux'
 
 import CaSeCard from './CaSeComps/CaSeCard/CaSeCard'
 
-import {getUser, getHeroes} from '../../ducks/userReducer'
-import {selectHero} from '../../ducks/heroReducer'
+import {getUser, getHeroes} from '../../../../../ducks/userReducer'
+import {selectHero} from '../../../../../ducks/heroReducer'
 
 class CharacterSelect extends Component {
     constructor(props) {
