@@ -43,6 +43,52 @@
   .nav-link {
       width: 100px;
       color: black;
+      height: 50px;
+  }
+
+  .art-links {
+    display: flex;
+    flex-direction: column;
+  
+    position: absolute;
+    top: -20px;
+    right: -300px;
+  
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg)
+  }
+  
+  .opening {
+    animation: opening .5s forwards;
+  }
+  .closing {
+    animation: closing .5s forwards;
+  }
+  
+  @keyframes opening {
+    from {
+      top: -20px;
+      right: -300px;
+      transform: rotate(-90deg)
+    }
+    to {
+      top: 90px;
+      right: 0px;
+      transform: rotate(0deg)
+    }
+  }
+  @keyframes closing {
+    from {
+      right: 0px;
+      top: 90px;
+      transform: rotate(0deg)
+    }
+    to {
+      right: -300px;
+      top: -20px;
+      transform: rotate(-90deg)
+    }
   }
 
   @keyframes App-logo-spin {
@@ -59,6 +105,10 @@
       }
   }
 
+
+
+
+
   @media screen and (max-width: 990px) {
   .App-title{
     display: none;
@@ -73,7 +123,7 @@
     border-bottom: solid black 2px;
     background: #a0d813;
     width: 150px;
-    height: 100px;
+
     font-size: 30px
   }
   .dropdownMenu {
@@ -87,46 +137,3 @@
 }
 
 
-.art-links {
-  display: flex;
-  flex-direction: column;
-
-  position: absolute;
-  top: 0px;
-  right: -140px;
-
-  width: 100px;
-  height: 200px;
-  transform: rotate(-90deg)
-}
-
-.opening {
-  animation: opening .5s forwards;
-}
-.closing {
-  animation: closing .5s forwards;
-}
-
-@keyframes opening {
-  from {
-    right: -140px;
-    transform: rotate(-90deg)
-  }
-  to {
-    top: 90px;
-    right: 0px;
-    transform: rotate(0deg)
-  }
-}
-@keyframes closing {
-  from {
-    right: 0px;
-    top: 90px;
-    transform: rotate(0deg)
-  }
-  to {
-    right: -140px;
-    top: 0px;
-    transform: rotate(-90deg)
-  }
-}

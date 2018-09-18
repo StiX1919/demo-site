@@ -23,6 +23,7 @@ class App extends Component {
     
 
   render() {
+      
     let navLinks = this.state.links.map((link, index) => {
         return (
             <Link to={`/${link}`}>
@@ -32,6 +33,7 @@ class App extends Component {
             </Link>
         )
     })
+
     return (
       <div className='App-header'>
             <img src={logo} className="App-logo" alt="logo" />
