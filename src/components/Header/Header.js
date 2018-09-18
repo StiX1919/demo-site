@@ -45,7 +45,7 @@ class App extends Component {
                     </div>
                 
 
-                <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu()}/>
+                <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}/>
                 <div className={this.state.menu ? 'dropdownMenu' : 'menu-Closed'}>
                     {navLinks}
                 </div>

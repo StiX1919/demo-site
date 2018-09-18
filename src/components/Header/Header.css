@@ -63,7 +63,7 @@
     animation: opening .5s forwards;
   }
   .closing {
-    animation: closing .5s forwards;
+    animation: closing 1s forwards;
   }
   
   @keyframes opening {
