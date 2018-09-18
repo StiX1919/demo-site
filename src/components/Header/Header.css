@@ -93,11 +93,11 @@
   flex-direction: column;
 
   position: absolute;
-  top: 80px;
-  right: -100px;
+  top: 0px;
+  right: -140px;
 
   width: 100px;
-  height: 150px;
+  transform: rotate(-90deg)
 }
 
 .opening {
@@ -109,17 +109,24 @@
 
 @keyframes opening {
   from {
-    right: -100px;
+    right: -140px;
+    transform: rotate(-90deg)
   }
   to {
-    right: 0px
+    top: 90px;
+    right: 0px;
+    transform: rotate(0deg)
   }
 }
 @keyframes closing {
   from {
     right: 0px;
+    top: 90px;
+    transform: rotate(0deg)
   }
   to {
-    right: -100px
+    right: -140px;
+    top: 0px;
+    transform: rotate(-90deg)
   }
 }

@@ -19,10 +19,18 @@ class App extends Component {
         this.setState({menu: thing})
     }
 
+
+    
+
   render() {
-    let navLinks = this.state.links.map(link => {
+    let navLinks = this.state.links.map((link, index) => {
         return (
-            <Link to={`/${link}`}><h4 className='nav-link'>{link}</h4></Link>
+            <Link to={`/${link}`}>
+                <h4 className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
+                >
+                    {link}
+                </h4>
+            </Link>
         )
     })
     return (
@@ -30,7 +38,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
                 <h1>Links</h1>
-                    <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }>
+                    <div>
                         {navLinks}
                     </div>
                 
