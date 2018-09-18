@@ -26,8 +26,7 @@ class App extends Component {
     let navLinks = this.state.links.map((link, index) => {
         return (
             <Link to={`/${link}`}>
-                <h4 className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
-                >
+                <h4 className='nav-link'>
                     {link}
                 </h4>
             </Link>
@@ -38,7 +37,8 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
                 <h1>Links</h1>
-                    <div>
+                    <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
+                    >
                         {navLinks}
                     </div>
                 
