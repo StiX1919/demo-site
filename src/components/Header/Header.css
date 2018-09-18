@@ -9,13 +9,20 @@
     align-items: center;
     background-color: #a0d813;
     width: 100vw;
-    height: 80px;
-    padding: 20px;
+    height: 110px;
+    /* padding: 20px; */
     color: white;
+    border-bottom-right-radius: 100% 35%;
+    border-bottom-left-radius: 0% 40%;
   }
   
   .App-title {
-    display: flex
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+    height: 50%;
+    width: 10%
   }
   .hamBar {
       height: 80px;
@@ -77,5 +84,42 @@
     animation: dropdownMenu .5s forwards;
     z-index: -1;
     display: block
+  }
+}
+
+
+.art-links {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 80px;
+  right: -100px;
+
+  width: 100px;
+  height: 150px;
+}
+
+.opening {
+  animation: opening .5s forwards;
+}
+.closing {
+  animation: closing .5s forwards;
+}
+
+@keyframes opening {
+  from {
+    right: -100px;
+  }
+  to {
+    right: 0px
+  }
+}
+@keyframes closing {
+  from {
+    right: 0px;
+  }
+  to {
+    right: -100px
   }
 }

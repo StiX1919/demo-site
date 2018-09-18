@@ -9,14 +9,14 @@ class App extends Component {
     constructor(){
         super()
         this.state = {
-            menu: false,
-            links: ['Home', 'About', 'Contact', 'Games']
+            menu: null,
+            links: ['Home', 'Games']
         }
         this.openMenu = this.openMenu.bind(this)
     }
 
-    openMenu() {
-        this.setState({menu: !this.state.menu})
+    openMenu(thing) {
+        this.setState({menu: thing})
     }
 
   render() {
@@ -28,9 +28,14 @@ class App extends Component {
     return (
       <div className='App-header'>
             <img src={logo} className="App-logo" alt="logo" />
-            <div>
-                <div className="App-title">{navLinks}</div>
-                <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar'onClick={() => this.openMenu()}/>
+            <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
+                <h1>Links</h1>
+                    <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }>
+                        {navLinks}
+                    </div>
+                
+
+                <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu()}/>
                 <div className={this.state.menu ? 'dropdownMenu' : 'menu-Closed'}>
                     {navLinks}
                 </div>
