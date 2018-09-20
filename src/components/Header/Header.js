@@ -39,16 +39,17 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
                 <h1>Links</h1>
-                    <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
-                    >
-                        {navLinks}
-                    </div>
+                    
                 
 
                 <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}/>
                 <div className={this.state.menu ? 'dropdownMenu' : 'menu-Closed'}>
                     {navLinks}
                 </div>
+            </div>
+            <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
+            >
+                {navLinks}
             </div>
       </div>
     );
