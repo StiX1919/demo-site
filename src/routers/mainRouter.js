@@ -7,8 +7,8 @@ import Games from '../components/Games/Games'
 
 export default (
         <Switch>
-            <Route path='/Games' component={Games}/>    
+            <Route exact path='/Games' component={Games}/>    
             <Route path='/Home' component={Home}/>
-            <Route path='/' component={Home}/>
+            <Route exact path='/' component={Home}/>
         </Switch>
     )

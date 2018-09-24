@@ -36,7 +36,7 @@ class App extends Component {
 
     return (
       <div className='App-header'>
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src='http://www.logodust.com/img/free/logo26.png ' className="App-logo" alt="logo" />
             <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
                 <h1>Links</h1>
                     
