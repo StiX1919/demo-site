@@ -4,6 +4,8 @@ import './Landing.css';
 import axios from 'axios'
 class MegaRPG extends Component {
 
+  //build function that checks for user on session. Redirect to character select
+
   userLogin() {
     window.location.href= 'http://localhost:3001/api/login'
   }

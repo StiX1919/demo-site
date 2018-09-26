@@ -12,6 +12,8 @@ class PixelArt extends Component {
     super()
     this.state = {
       color: '#FFFFFF',
+      reactColor: '#FFFFFF',
+      opacity: 1,
       height: 20,
       width: 20,
       pixSize: 20,
@@ -54,7 +56,8 @@ class PixelArt extends Component {
                 pixelArr.push(Object.assign({}, matchArr[0], {cInd: c, rInd: r}))
                 c++
               } else {
-                pixelArr.push({cInd: c, rInd: r, color: '#FFFFFF'})
+                pixelArr.push({cInd: c, rInd: r, color: '#FFFFFF', opacity: 1})
+                //add transparancy to pixel objects, at 
                 c++
               }
             } else {
@@ -68,7 +71,7 @@ class PixelArt extends Component {
         else 
           for(let c = 0; c < this.state.width; c++){
             for(let r = 0; r < this.state.height; r++){
-              pixelArr.push({cInd: c, rInd: r, color: '#FFFFFF'})
+              pixelArr.push({cInd: c, rInd: r, color: '#FFFFFF', opacity: 1})
             }
           }
         console.log(oldArr, pixelArr)
@@ -78,7 +81,9 @@ class PixelArt extends Component {
 
   handleColorChange(e){
     console.log(e)
-    this.setState({color: e.hex})
+    this.setState({reactColor: e.rgb, color: e.hex, opacity: e.rgb.a})
+
+    // grab transparancy. at e.rgb.a. is 1 or less
   }
 
   async handleChangeHeight(value){
@@ -95,11 +100,11 @@ class PixelArt extends Component {
   }
 
 
-  choosePixColor(color, index, arr){
+  choosePixColor(color, opacity, index, arr){
     let newArr = arr
 
     newArr[index].color = color
-    console.log(newArr[index])
+    newArr[index].opacity = opacity
     this.setState({pixelArr: newArr})
   }
 
@@ -146,6 +151,7 @@ class PixelArt extends Component {
                         index={i} 
                         pixSize={this.state.pixSize}
                         color={this.state.color}
+                        opacity={this.state.opacity}
                         allArr={arr}
                         chooseColor={this.choosePixColor}
                         border={this.state.border}
@@ -161,7 +167,7 @@ class PixelArt extends Component {
                 </div>  
             </div>
         
-            <SketchPicker color={this.state.color} onChangeComplete={(e) => this.handleColorChange(e)} />
+            <SketchPicker color={this.state.reactColor} onChangeComplete={(e) => this.handleColorChange(e)} />
 
         </div>
         
