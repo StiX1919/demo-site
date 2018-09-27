@@ -48,6 +48,7 @@
   .art-links {
     display: flex;
     flex-direction: column;
+    visibility: hidden;
   
     position: absolute;
     top: -20px;
@@ -69,24 +70,28 @@
     from {
       top: -20px;
       right: -300px;
-      transform: rotate(-90deg)
+      transform: rotate(-90deg);
+      visibility: hidden;
     }
     to {
       top: 90px;
       right: 0px;
-      transform: rotate(0deg)
+      transform: rotate(0deg);
+      visibility: visible;
     }
   }
   @keyframes closing {
     from {
       right: 0px;
       top: 90px;
-      transform: rotate(0deg)
+      transform: rotate(0deg);
+      visibility: visible;
     }
     to {
       right: -300px;
       top: -20px;
-      transform: rotate(-90deg)
+      transform: rotate(-90deg);
+      visibility: hidden;
     }
   }
 
