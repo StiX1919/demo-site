@@ -18,7 +18,7 @@ class App extends Component {
     openMenu(thing) {
         this.setState({menu: thing})
     }
-
+//hello
 
     
 
