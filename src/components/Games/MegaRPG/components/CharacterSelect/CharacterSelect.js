@@ -35,7 +35,7 @@ class CharacterSelect extends Component {
                 <Link to='/poop'><h1>ChooseCharacter</h1></Link>
                 {heroCards}
                 {this.props.isLoading !== true && this.props.heroes.length < 5 &&
-                    <Link to ='/newCharacter'><button>Create new character</button></Link>
+                    <Link to ='/Games/MegaRPG/CreateCharacter'><button>Create new character</button></Link>
                 }
                 
             </div>
