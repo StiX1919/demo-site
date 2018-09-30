@@ -1,3 +1,4 @@
+
 module.exports = {
     getClasses: (req, res) => {
       const dbInstance = req.app.get("db");
@@ -15,17 +16,55 @@ module.exports = {
     },
 
     createNewHero: (req, res) => {
+        
+        const {name, heroClass, stats, luck} = req.body
         const dbInstance = req.app.get('db');
         console.log('req.body', req.body)
-        dbInstance.createNewHero([req.body.name, 
-                                    req.body.race, 
-                                    req.body.class, 
-                                    req.body.str, 
-                                    req.body.def, 
-                                    req.body.spd, 
-                                    req.body.userId]).then(response => {
-            res.status(200).json(response)
-        }).catch(console.log)
+
+        dbInstance.createNewHero([
+            name,
+            heroClass,
+            10,
+            1
+            //change 1 to userId
+        ])
+        .then(response => {
+            console.log(response)
+            let HP = (stats[0].value + stats[2].value)*2
+            let SP = (stats[1].value + stats[3].value)
+            let MP = stats[3].value + luck
+            dbInstance.createHeroStats([
+                response.hero_id,
+                stats[0].value, 
+                stats[1].value, 
+                stats[2].value, 
+                stats[3].value,
+                HP,
+                SP,
+                MP,
+                luck,
+                1,
+                0,
+                0
+            ]).then(statResponse => {
+                console.log(statResponse)
+            }).catch(statErr => {
+                console.log('stats error', statErr)
+            })
+        }).catch(heroErr => {
+            console.log('hero Error', heroErr)
+        })
+
+        // dbInstance.createNewHero([req.body.name, 
+        //                             req.body.class, 
+        //                             stats['Strength'].value, 
+        //                             stats['Speed'].value, 
+        //                             stats['Endurance'].value, 
+        //                             stats['Intelligence'].value,
+        //                             req.body.userId])
+        // .then(response => {
+        //     res.status(200).json(response)
+        // }).catch(console.log)
 
     },
 

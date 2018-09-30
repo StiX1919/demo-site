@@ -76,6 +76,7 @@ class CreateCharacter extends Component {
                       {statList}
                     </div>
                 </div>
+                <button onClick={() => this.props.createNewHero({name: this.state.name, heroClass: this.state.class})}></button>
             </div>
         )
     }
