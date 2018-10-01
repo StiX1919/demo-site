@@ -19,13 +19,12 @@ module.exports = {
         
         const {name, heroClass, stats, luck} = req.body
         const dbInstance = req.app.get('db');
-        console.log('req.body', req.body)
 
         dbInstance.createNewHero([
             name,
             heroClass,
             10,
-            1
+            req.session.passport.user.user_id
             //change 1 to userId
         ])
         .then(response => {
@@ -34,7 +33,7 @@ module.exports = {
             let SP = (stats[1].value + stats[3].value)
             let MP = stats[3].value + luck
             dbInstance.createHeroStats([
-                response.hero_id,
+                response[0].hero_id,
                 stats[0].value, 
                 stats[1].value, 
                 stats[2].value, 
@@ -47,7 +46,8 @@ module.exports = {
                 0,
                 0
             ]).then(statResponse => {
-                console.log(statResponse)
+                console.log(statResponse);
+                res.sendStatus(200)
             }).catch(statErr => {
                 console.log('stats error', statErr)
             })
