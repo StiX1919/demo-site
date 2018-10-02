@@ -70,9 +70,9 @@ module.exports = {
 
     getHeroes: (req, res) => {
         // const dbInstance = ;
-
-        req.app.get('db').getHeroes([req.user.user_id]).then(response => {
-            console.log('hero response', response[0])
+        console.log(req.session.passport)
+        req.app.get('db').getHeroes(req.session.passport.user.user_id).then(response => {
+            console.log('hero response', response)
             res.status(200).json(response)
         }).catch(console.log)
     }

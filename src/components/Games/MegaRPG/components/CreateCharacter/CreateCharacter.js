@@ -42,6 +42,11 @@ class CreateCharacter extends Component {
       }
     }
 
+    createNewHero() {
+      this.props.createNewHero({name: this.state.name, heroClass: this.state.class})
+      window.location.href='/#/Games/MegaRPG/CharacterSelect'
+    }
+
     render() {
       let statList = this.props.stats.map((stat, ind )=> {
         return (
@@ -76,7 +81,7 @@ class CreateCharacter extends Component {
                       {statList}
                     </div>
                 </div>
-                <button onClick={() => this.props.createNewHero({name: this.state.name, heroClass: this.state.class})}></button>
+                <button onClick={() => this.createNewHero()}></button>
             </div>
         )
     }
