@@ -92,7 +92,7 @@ class AdventureScreen extends Component {
     );
   }
 }
-
+// not today!
 const mapStateToProps = state => ({...state.heroReducer, ...state.monsterReducer})
 
 export default withRouter(connect(mapStateToProps, { getMonster})(AdventureScreen));
