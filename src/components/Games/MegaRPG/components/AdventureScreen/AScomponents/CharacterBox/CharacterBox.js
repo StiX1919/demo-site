@@ -69,64 +69,53 @@ class CharacterBox extends Component {
     render() {
         let hero = this.props.currentHero
 
-        let liveEquipment = 'Loading...'
-        if(this.state.equipment) {
-            liveEquipment = Object.keys(this.state.equipment).map(item => {
-                return <Equipment type={item} equipObj={this.state.equipment[item]}/>
-            })
-        }
+        // let liveEquipment = 'Loading...'
+        // if(this.state.equipment) {
+        //     liveEquipment = Object.keys(this.state.equipment).map(item => {
+        //         return <Equipment type={item} equipObj={this.state.equipment[item]}/>
+        //     })
+        // }
 
-        let inventory = <h3>Empty</h3>
-        if (this.props.currentInventory[0]){
-            inventory = this.props.currentInventory.map(item => {
-                return <Inventory item={item} equipment={this.state.equipment} remount={this.setHero}/>
-            })}
+        // let inventory = <h3>Empty</h3>
+        // if (this.props.currentInventory[0]){
+        //     inventory = this.props.currentInventory.map(item => {
+        //         return <Inventory item={item} equipment={this.state.equipment} remount={this.setHero}/>
+        //     })}
         
-        let buffs = {str: 0, def: 0, spd: 0}
-        if(this.state.equipment) {
-            Object.keys(this.state.equipment).map((item, index) => {
-                buffs.str += this.state.equipment[item].pwr ? this.state.equipment[item].pwr : 0
-                buffs.def += this.state.equipment[item].def ? this.state.equipment[item].def : 0
-                buffs.spd += this.state.equipment[item].spd ? this.state.equipment[item].spd : 0
-            }) 
-        }
+        // let buffs = {str: 0, def: 0, spd: 0}
+        // if(this.state.equipment) {
+        //     Object.keys(this.state.equipment).map((item, index) => {
+        //         buffs.str += this.state.equipment[item].pwr ? this.state.equipment[item].pwr : 0
+        //         buffs.def += this.state.equipment[item].def ? this.state.equipment[item].def : 0
+        //         buffs.spd += this.state.equipment[item].spd ? this.state.equipment[item].spd : 0
+        //     }) 
+        // }
 
         return (
             
             <div className='charBox'>
                 <div>
                     <h3>{hero ? hero.hero_name : 'nameless'}</h3>
-                    <h4>Level: {this.props.level}</h4>
-                    {this.props.exp >= this.props.nextLevel &&
+                    <h4>Level: {hero.hero_level}</h4>
+                    <h3>HP: {hero.hero_hp}</h3>
+        
+                    {hero.hero_exp >= this.props.nextLevel &&
                         <button onClick={() => this.props.levelUp(this.props.exp, this.props.level, this.props.nextLevel, this.props.currentHero)}>Level Up</button>
                     }
-                    <h4>EXP: {this.props.exp}/{this.props.nextLevel}</h4>
-                    <h4>Gold: {this.props.gold}</h4>
+                    <h4>EXP: {hero.hero_exp}/{this.props.nextLevel}</h4>
+                    <h4>Gold: {hero.gold}</h4>
                     
                 </div>
-                {this.props.currentMonster && this.props.currentMonster.HP > 0 &&
-                    <button onClick={() => this.attacking(this.props.currentMonster, this.state.hero, buffs)}>Attack!!</button>
-                }
-                {this.props.currentMonster && this.props.currentMonster.HP <= 0 &&
-                    <div>
-                        <button onClick={() => this.props.getNewMon()} >New Monster</button>
-                    </div>
-                }
                 
                 <h3>Extra Stats: {hero ? hero.extra_stats : 0}</h3>
 
-                <StatBox statType='str' statModifier={this.setHero} buffs = {buffs} currStat={this.props.currentHero.hero_str} statsLeft={hero ? hero.extra_stats : 0}/>
-                <StatBox statType='def' statModifier={this.setHero} buffs = {buffs} currStat={this.props.currentHero.hero_def} statsLeft={hero ? hero.extra_stats : 0}/>
-                <StatBox statType='spd' statModifier={this.setHero} buffs = {buffs} currStat={this.props.currentHero.hero_spd} statsLeft={hero ? hero.extra_stats : 0}/>
-                <h3>Equipment:</h3>
-                {liveEquipment}
+                <StatBox statType='Strength' statModifier={this.setHero} currStat={hero.strength} statsLeft={hero ? hero.extra_stats : 0}/>
+                <StatBox statType='Endurance' statModifier={this.setHero} currStat={hero.endurance} statsLeft={hero ? hero.extra_stats : 0}/>
+                <StatBox statType='Speed' statModifier={this.setHero} currStat={hero.speed} statsLeft={hero ? hero.extra_stats : 0}/>
+                <StatBox statType='Intelligence' statModifier={this.setHero} currStat={hero.intelligence} statsLeft={hero ? hero.extra_stats : 0}/>
+               
                 
-                <button onClick={() => this.openInventory()}>Inventory</button>
-                {this.state.invOpen && 
-                    <div className='inventory'>
-                        {inventory}
-                    </div>
-                }
+                
                 
             </div>
         )

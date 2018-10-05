@@ -21,11 +21,13 @@ class CaSeCard extends Component {
             <div className='hero_card'>
                 <img className='hero_img' src={hero.picture}/>
                 <div>
-                    <h3>{hero.hero_name}</h3>
-                    <h4>{hero.name}</h4>
-                    <h5>Str:{hero.hero_str}</h5>
-                    <h5>Def:{hero.hero_def}</h5>
-                    <h5>Spd:{hero.hero_spd}</h5>
+                    <h2>{hero.hero_name}</h2>
+                    <h3>{hero.hero_class}</h3>
+
+                    <h5>Strength:{hero.strength}</h5>
+                    <h5>Endurance:{hero.endurance}</h5>
+                    <h5>Speed:{hero.speed}</h5>
+                    <h5>Intelligence: {hero.intelligence}</h5>
                 </div>
             </div>
         )

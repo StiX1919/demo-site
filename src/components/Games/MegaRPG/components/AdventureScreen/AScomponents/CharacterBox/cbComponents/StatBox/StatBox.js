@@ -19,9 +19,9 @@ class StatBox extends Component {
             <div className='statBox'>
                 <h4>Base {this.props.statType}: </h4>
 
-                <h4>{this.props.currStat} + {this.props.buffs[this.props.statType]}</h4>
+                <h4>{this.props.currStat}</h4>
                 {this.props.statsLeft > 0 &&
-                    <button onClick={() => this.props.statModifier(this.props.currentHero, '+', this.props.statType)}>{'>'}</button>
+                    <button onClick={() => this.props.statModifier(this.props.currentHero, '+', (this.props.statType.toLowerCase()))}>{'>'}</button>
                 }
                 
             </div>
