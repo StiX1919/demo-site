@@ -28,7 +28,7 @@ let shop = [{name: 'Knife', pwr: 1, spd: 1, def: 0, price: 10, type: 'weapon', a
             {name: 'Bracelet', pwr: 1, spd: 0, def: 1, price: 12, type: 'arms'}, 
             {name: 'High heels', pwr: 1, spd: 0, def: 1, price: 12, type: 'legs'}]
 
-const {getClasses, getRaces, createNewHero, getHeroes} = require('./controllers/mainController.js')
+const {getClasses, getRaces, createNewHero, getHeroes, demoHero} = require('./controllers/mainController.js')
 
 //SAVED FOR BUILD
 //app.use(express.static(`${__dirname}/public/build`));
@@ -103,6 +103,7 @@ app.get('/api/login', passport.authenticate('auth0', {
 ))
 
 
+app.get('/api/demo', demoHero)
 
 
 app.get('/api/getMonster', (req, res) => {

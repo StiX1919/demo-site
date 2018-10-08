@@ -7,6 +7,8 @@ const GET_USER = "GET_USER"
 
 const GET_HEROES = 'GET_HEROES'
 
+const DEMO_HERO = 'DEMO_HERO'
+
 
 
 //Initial State
@@ -35,6 +37,12 @@ export function getHeroes() {
     }
 }
 
+export function getDemoCharacter(){
+    return {
+        type: DEMO_HERO,
+        payload: axios.get('/api/demo')
+    }
+}
 
 
 
@@ -67,6 +75,17 @@ export default function userReducer(state=initialState, action) {
                 heroes: action.payload.data
             }
 
+        case DEMO_HERO + '_PENDING':
+            return {
+                ...state, 
+                isLoading: true
+            }
+        case DEMO_HERO + '_FULFILLED':
+            return {
+                ...state,
+                isLoading: false,
+                heroes: action.payload.data
+            }
         default:
             return state
     }

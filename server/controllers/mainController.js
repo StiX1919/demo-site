@@ -75,5 +75,13 @@ module.exports = {
             console.log('hero response', response)
             res.status(200).json(response)
         }).catch(console.log)
+    },
+
+    demoHero: (req, res) => {
+        req.app.get('db').getDemo()
+        .then(response => {
+            res.status(200).json(response)
+        })
+        .catch(err => console.log(err))
     }
   };
