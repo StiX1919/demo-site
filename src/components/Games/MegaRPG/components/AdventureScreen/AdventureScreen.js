@@ -55,7 +55,8 @@ class AdventureScreen extends Component {
 
     return (
     <div className='page'>
-      <div className="App">
+      <div className="battle_interface">
+
         <CharacterBox getNewMon={this.props.getMonster}/>
         
           {this.props.currentMonster && this.props.currentMonster.HP <= 0 &&
@@ -63,10 +64,10 @@ class AdventureScreen extends Component {
           }
 
 
-        <div>
+        
           {this.props.currentMonster && this.props.currentMonster.HP > 0 && <MonsterBox />}
           
-        </div>
+       
         
       </div>
       <div className='skills'>
