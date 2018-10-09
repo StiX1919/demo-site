@@ -20,13 +20,14 @@ let monsters = [{name: 'Slime', description: 'A small slime, early adventurers t
 {name: 'Zombio', description: 'An undead, no one knows why they have risen again.', HP: 20, strength: 3, defense: 0, speed: 1, expValue: 14, gold: 2, image: 'https://i.pinimg.com/originals/2a/99/a8/2a99a878e17b7527ea1f72b7730c6be9.gif'},
 {name: 'Lion', description: 'Large muscly cat. The females do most of the work.', HP: 18, strength: 3, defense: 2, speed: 3, expValue: 20, gold: 0, image: 'https://i.pinimg.com/originals/2a/99/a8/2a99a878e17b7527ea1f72b7730c6be9.gif'}]
 
-let shop = [{name: 'Knife', pwr: 1, spd: 1, def: 0, price: 10, type: 'weapon', abilityTypes: ['slashing', 'stabbing', 'knives']}, 
-            {name: 'Sword', pwr: 1, spd: 0, def: 1, price: 12, type: 'weapon', dmgType: ['slashing', 'swords']},
-            {name: 'Axe', pwr: 2, spd: 0, def: 0, price: 14, type: 'weapon', dmgType: ['slashing', 'axes']}, 
-            {name: 'Helmet', pwr: 1, spd: 0, def: 1, price: 12, type: 'head'}, 
-            {name: 'Leather Armor', pwr: 1, spd: 0, def: 1, price: 12, type: 'chest'}, 
-            {name: 'Bracelet', pwr: 1, spd: 0, def: 1, price: 12, type: 'arms'}, 
-            {name: 'High heels', pwr: 1, spd: 0, def: 1, price: 12, type: 'legs'}]
+let shop = []
+// [{name: 'Knife', pwr: 1, spd: 1, def: 0, price: 10, type: 'weapon', abilityTypes: ['slashing', 'stabbing', 'knives']}, 
+//             {name: 'Sword', pwr: 1, spd: 0, def: 1, price: 12, type: 'weapon', dmgType: ['slashing', 'swords']},
+//             {name: 'Axe', pwr: 2, spd: 0, def: 0, price: 14, type: 'weapon', dmgType: ['slashing', 'axes']}, 
+//             {name: 'Helmet', pwr: 1, spd: 0, def: 1, price: 12, type: 'head'}, 
+//             {name: 'Leather Armor', pwr: 1, spd: 0, def: 1, price: 12, type: 'chest'}, 
+//             {name: 'Bracelet', pwr: 1, spd: 0, def: 1, price: 12, type: 'arms'}, 
+//             {name: 'High heels', pwr: 1, spd: 0, def: 1, price: 12, type: 'legs'}]
 
 const {getClasses, getRaces, createNewHero, getHeroes, demoHero} = require('./controllers/mainController.js')
 
@@ -111,7 +112,12 @@ app.get('/api/getMonster', (req, res) => {
   res.send(item)
 })
 app.get('/api/getShop', (req, res) => {
-  res.send(shop)
+  const dbInstance = req.app.get('db');
+
+  dbInstance.getShopItems().then( response => {
+    console.log(response)
+    res.status(200).send(response)
+  })
 })
 
 app.get('/api/getUser', (req, res, next) => {

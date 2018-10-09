@@ -6,7 +6,7 @@ import './Shop.css';
 
 import ShopItems from './shopComponents/shopItems/ShopItems'
 
-import {getShop, purchaseItem} from '../../../../../../../ducks/heroReducer'
+import {getShop, purchaseItem} from '../../../../../../../ducks/shopReducer'
 
 class Shop extends Component {
     constructor(){
@@ -24,9 +24,10 @@ class Shop extends Component {
       
 
     render() {
+        console.log(this.props.shopItems)
         let shopItems = <h3>Loading...</h3>
 
-        if (this.props.shopItems){
+        if (this.props.shopItems[0]){
             shopItems = this.props.shopItems.map((item, index)=> {
                 return <ShopItems item={item} gold={this.props.gold}/>
             })
@@ -51,6 +52,6 @@ class Shop extends Component {
     }
 
 }   
-const mapStateToProps = state => ({...state.reducer, ...state.heroReducer})
+const mapStateToProps = state => ({...state.reducer, ...state.heroReducer, ...state.shopReducer})
 
 export default connect(mapStateToProps, {getShop, purchaseItem})(Shop);
