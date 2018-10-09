@@ -54,7 +54,7 @@ class AtkInterface extends Component {
     this.setState({damageDone: damage})
     console.log(damage, crit, critNum, bonus, luckFactor)
     this.showDamageDone()
-    // this.props.attack(newMon)
+    this.props.attack(newMon)
   }
 
 
