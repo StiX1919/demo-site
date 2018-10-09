@@ -8,6 +8,7 @@ import './AdventureScreen.css';
 import CharacterBox from './AScomponents/CharacterBox/CharacterBox'
 import MonsterBox from './AScomponents/MonsterBox/MonsterBox'
 import Shop from './AScomponents/Shop/Shop'
+import AtkInterface from './AScomponents/AtkInterface/AtkInterface'
 
 import {getMonster} from '../../../../../ducks/monsterReducer'
 
@@ -58,6 +59,7 @@ class AdventureScreen extends Component {
       <div className="battle_interface">
 
         <CharacterBox getNewMon={this.props.getMonster}/>
+        <AtkInterface />
         
           {this.props.currentMonster && this.props.currentMonster.HP <= 0 &&
             <h2>Monster is Dead!</h2>
