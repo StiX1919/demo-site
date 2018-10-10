@@ -50,7 +50,7 @@ class HeroHub extends Component {
     <div className='page'>
 
         <CharacterBox />
-        
+        {/*add location here*/}
 
     </div>
     );
