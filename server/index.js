@@ -115,7 +115,12 @@ app.get('/api/getShop', (req, res) => {
   const dbInstance = req.app.get('db');
 
   dbInstance.getShopItems().then( response => {
-    console.log(response)
+    let newRes = response.map(item =>{
+      console.log(item.stat_mod)
+      
+      return item
+    })
+    console.log(newRes)
     res.status(200).send(response)
   })
 })
