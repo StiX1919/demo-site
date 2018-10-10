@@ -17,6 +17,8 @@ const LEVEL_UP = 'LEVEL_UP'
 
 const GET_WEAPON_EXP = 'GET_WEAPON_EXP'
 
+const GET_DUNGEONS = 'GET_DUNGEONS'
+
 //Initial State
 
 const initialState = {
@@ -35,12 +37,21 @@ const initialState = {
     level: 1,
     gold: 10,
     bonusStats: 0,
-    abilities: []
+    abilities: [],
+    dungeons: []
 
 }
 
 
 //Action Creators
+//grabs discovered dungeons on load
+export function getDungeons(id){
+    console.log('dungeon id', id)
+    return {
+        action: GET_DUNGEONS,
+        payload: axios.get(`/api/getDungeons?heroID=${id}`)
+    }
+}
 
 //grants weapon abilities and experience
 export function getWeaponExp(weapon, abilities) {

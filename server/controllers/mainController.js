@@ -83,5 +83,13 @@ module.exports = {
             res.status(200).json(response)
         })
         .catch(err => console.log(err))
+    },
+
+    getDungeons: (req, res) => {
+        console.log(req.query)
+        req.app.get('db').getDungeons(req.query.heroID)
+        .then( response => {
+            console.log(response)
+        })
     }
   };

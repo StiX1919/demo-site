@@ -7,6 +7,8 @@ import './HeroHub.css';
 
 import CharacterBox from '../AdventureScreen/AScomponents/CharacterBox/CharacterBox'
 
+import {getDungeons} from '../../../../../ducks/heroReducer'
+
 
 class HeroHub extends Component {
   constructor(props) {
@@ -19,6 +21,10 @@ class HeroHub extends Component {
     }
     this.openShop = this.openShop.bind(this)
 
+  }
+  componentDidMount() {
+    this.props.getDungeons(this.props.currentHero.hero_id)
+    
   }
 
   openShop() {
@@ -59,4 +65,4 @@ class HeroHub extends Component {
 // not today!
 const mapStateToProps = state => ({...state.heroReducer})
 
-export default withRouter(connect(mapStateToProps)(HeroHub));
+export default withRouter(connect(mapStateToProps, {getDungeons})(HeroHub));
