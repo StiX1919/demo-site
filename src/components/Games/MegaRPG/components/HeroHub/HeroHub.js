@@ -43,6 +43,7 @@ class HeroHub extends Component {
   }
 
   render() {
+      console.log(this.props.dungeons)
     let inventory = <h3>Empty</h3>
     if (this.props.currentInventory[0]){
         inventory = this.props.currentInventory.map(item => {
@@ -55,11 +56,25 @@ class HeroHub extends Component {
         {console.log(this.props.currentHero, 'top hero pors')}
 
 
+    let dungs = <h3>Scouting</h3>;
+
+    if(this.props.dungeons[0]){
+        dungs = this.props.dungeons.map(dungeon => {
+            return (
+                <h1>{dungeon.name}</h1>
+            )
+        })
+    }
+
     return (
     <div className='page'>
 
         <CharacterBox />
         {/*add location here*/}
+        <div>
+            <h1>Available Dungeons</h1>
+            {dungs}
+        </div>
 
     </div>
     );

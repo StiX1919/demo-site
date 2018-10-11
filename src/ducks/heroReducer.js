@@ -17,7 +17,7 @@ const LEVEL_UP = 'LEVEL_UP'
 
 const GET_WEAPON_EXP = 'GET_WEAPON_EXP'
 
-const GET_DUNGEONS = 'GET_DUNGEONS'
+const FOUND_DUNGEONS = "FOUND_DUNGEONS"
 
 //Initial State
 
@@ -46,9 +46,8 @@ const initialState = {
 //Action Creators
 //grabs discovered dungeons on load
 export function getDungeons(id){
-    console.log('dungeon id', id)
     return {
-        action: GET_DUNGEONS,
+        type: FOUND_DUNGEONS,
         payload: axios.get(`/api/getDungeons?heroID=${id}`)
     }
 }
@@ -176,6 +175,7 @@ export function statModifier(hero, direction, statType) {
 //Reducer
 
 export default function heroReducer(state=initialState, action) {
+    console.log(action)
     switch(action.type) {
         case SELECT_HERO:
             return {
@@ -208,6 +208,13 @@ export default function heroReducer(state=initialState, action) {
                 isLoading: false,
                 shopItems: action.payload
             });
+
+        case `${FOUND_DUNGEONS}_PENDING`:
+            return Object.assign({}, state, {
+                isLoading: true
+            });
+        case `${FOUND_DUNGEONS}_FULFILLED`:
+            return {...state, isLoading: false, dungeons: action.payload.data};
 
         case PURCHASE_ITEM:
             return Object.assign({}, state, {

@@ -86,10 +86,10 @@ module.exports = {
     },
 
     getDungeons: (req, res) => {
-        console.log(req.query)
         req.app.get('db').getDungeons(req.query.heroID)
         .then( response => {
             console.log(response)
+            res.status(200).json(response)
         })
     }
   };
