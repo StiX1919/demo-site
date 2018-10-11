@@ -23,6 +23,9 @@ class HeroHub extends Component {
 
   }
   componentDidMount() {
+    if(!this.props.heroes[0]){
+        window.location.href= '/#/Games/MegaRPG'
+    } else
     this.props.getDungeons(this.props.currentHero.hero_id)
     
   }
@@ -63,6 +66,6 @@ class HeroHub extends Component {
   }
 }
 // not today!
-const mapStateToProps = state => ({...state.heroReducer})
+const mapStateToProps = state => ({...state.heroReducer, ...state.userReducer})
 
 export default withRouter(connect(mapStateToProps, {getDungeons})(HeroHub));
