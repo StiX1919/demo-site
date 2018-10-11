@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import axios from 'axios'
-
 import {connect} from 'react-redux'
 
 
@@ -19,7 +17,7 @@ class CaSeCard extends Component {
         const hero = this.props.hero
         return(
             <div className='hero_card'>
-                <img className='hero_img' src={hero.picture}/>
+                <img className='hero_img' src={hero.picture} alt='hero_pic'/>
                 <div>
                     <h2>{hero.hero_name}</h2>
                     <h3>{hero.hero_class}</h3>

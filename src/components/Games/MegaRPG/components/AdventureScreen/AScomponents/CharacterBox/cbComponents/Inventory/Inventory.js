@@ -21,7 +21,7 @@ class Inventory extends Component {
             await this.props.equipGear(item, equip)
             await this.props.remount()
         } catch(err) {
-            console.log
+            console.log(err)
         }
         
     }

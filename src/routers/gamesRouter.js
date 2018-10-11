@@ -6,13 +6,13 @@ import {Route, Switch} from 'react-router-dom'
 import MegaRPG from '../components/Games/MegaRPG/Landing'
 import CreateCharacter from '../components/Games/MegaRPG/components/CreateCharacter/CreateCharacter'
 import CharacterSelect from '../components/Games/MegaRPG/components/CharacterSelect/CharacterSelect'
-import AdventureScreen from '../components/Games/MegaRPG/components/AdventureScreen/AdventureScreen'
+// import AdventureScreen from '../components/Games/MegaRPG/components/AdventureScreen/AdventureScreen'
 import HeroHub from '../components/Games/MegaRPG/components/HeroHub/HeroHub'
 
 //Pixart links
 import PixelArt from '../components/Games/PixelArt/PixelArt'
 
-import Games from '../components/Games/Games'
+// import Games from '../components/Games/Games'
 
 export default (
         <Switch>

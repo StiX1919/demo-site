@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 import './CharacterBox.css';
 
 import StatBox from './cbComponents/StatBox/StatBox'
-import Equipment from './cbComponents/equipment/equipment'
-import Inventory from './cbComponents/Inventory/Inventory'
+// import Equipment from './cbComponents/equipment/equipment'
+// import Inventory from './cbComponents/Inventory/Inventory'
 
 import {statModifier, beatMonster, levelUp, getWeaponExp, selectHero} from '../../../../../../../ducks/heroReducer'
 import { getDemoCharacter } from '../../../../../../../ducks/userReducer'
@@ -107,4 +107,4 @@ class CharacterBox extends Component {
 }   
 const mapStateToProps = state => ({...state.heroReducer, ...state.monsterReducer, ...state.userReducer})
 
-export default withRouter(connect(mapStateToProps, {statModifier, levelUp, attack, beatMonster, levelUp, getWeaponExp, getDemoCharacter, selectHero})(CharacterBox));
+export default withRouter(connect(mapStateToProps, {statModifier, levelUp, attack, beatMonster, getWeaponExp, getDemoCharacter, selectHero})(CharacterBox));

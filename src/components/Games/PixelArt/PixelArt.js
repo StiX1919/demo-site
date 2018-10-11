@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {SketchPicker} from 'react-color'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 
 import Pixel from './components/Pixel/Pixel'
 import './PixelArt.css';

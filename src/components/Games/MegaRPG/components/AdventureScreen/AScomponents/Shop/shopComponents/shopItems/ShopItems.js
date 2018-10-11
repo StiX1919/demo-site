@@ -18,7 +18,7 @@ class ShopItems extends Component {
 
     render() {
         let item = this.props.item
-        let gold = this.props.gold
+        // let gold = this.props.gold
         return (
             
              <div className='descriptors2'>

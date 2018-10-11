@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -42,16 +41,16 @@ class AdventureScreen extends Component {
   }
 
   render() {
-    let inventory = <h3>Empty</h3>
-    if (this.props.currentInventory[0]){
-        inventory = this.props.currentInventory.map(item => {
-            console.log(item,this.props.inventory)
-            return <div className="inventoryItems">
-                <h3>{item.name}</h3>
-                <button onClick={() => this.equipItem(item)}>Equip</button>
-                </div>
-        })}
-        {console.log(this.props.currentHero, 'top hero pors')}
+    // let inventory = <h3>Empty</h3>
+    // if (this.props.currentInventory[0]){
+    //     inventory = this.props.currentInventory.map(item => {
+    //         console.log(item,this.props.inventory)
+    //         return <div className="inventoryItems">
+    //             <h3>{item.name}</h3>
+    //             <button onClick={() => this.equipItem(item)}>Equip</button>
+    //             </div>
+    //     })}
+    //     {console.log(this.props.currentHero, 'top hero pors')}
 
 
     return (

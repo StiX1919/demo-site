@@ -7,7 +7,6 @@ import { getDemoCharacter } from '../../../ducks/userReducer'
 import { selectHero } from '../../../ducks/heroReducer'
 
 import CaSeCard from './components/CharacterSelect/CaSeComps/CaSeCard/CaSeCard'
-import axios from 'axios'
 class MegaRPG extends Component {
 
   //build function that checks for user on session. Redirect to character select
@@ -24,7 +23,7 @@ class MegaRPG extends Component {
     let heroCards = (<h2>Loading Demo Hero</h2>)
     if(this.props.heroes[0]) {
         heroCards = this.props.heroes.map((hero, ind) => {
-            return  <Link to={`/Games/MegaRPG/hero/${hero.hero_id}`} onClick={() => this.props.selectHero(hero)}>
+            return  <Link key={ind} to={`/Games/MegaRPG/hero/${hero.hero_id}`} onClick={() => this.props.selectHero(hero)}>
                         <CaSeCard hero={hero} />
                     </Link>
         })

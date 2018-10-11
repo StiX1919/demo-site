@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -43,25 +42,13 @@ class HeroHub extends Component {
   }
 
   render() {
-      console.log(this.props.dungeons)
-    let inventory = <h3>Empty</h3>
-    if (this.props.currentInventory[0]){
-        inventory = this.props.currentInventory.map(item => {
-            console.log(item,this.props.inventory)
-            return <div className="inventoryItems">
-                <h3>{item.name}</h3>
-                <button onClick={() => this.equipItem(item)}>Equip</button>
-                </div>
-        })}
-        {console.log(this.props.currentHero, 'top hero pors')}
-
 
     let dungs = <h3>Scouting</h3>;
 
     if(this.props.dungeons[0]){
-        dungs = this.props.dungeons.map(dungeon => {
+        dungs = this.props.dungeons.map((dungeon, i) => {
             return (
-                <h1>{dungeon.name}</h1>
+                <h1 key={i}>{dungeon.name}</h1>
             )
         })
     }

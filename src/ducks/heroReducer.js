@@ -55,19 +55,19 @@ export function getDungeons(id){
 //grants weapon abilities and experience
 export function getWeaponExp(weapon, abilities) {
     console.log(weapon)
-    let newAbils = abilities.map(abil => {
-        if(abilities[0]){
-            if(abil.name === weapon.weaponType){
-                abil.exp++
-            } else
-            for(let i = 0; i < weapon.damageType; i++){
-                if(abil.name === weapon.damageType[i]){
-                    abil.exp++
-                }
-            }
-        }
+    // let newAbils = abilities.map(abil => {
+    //     if(abilities[0]){
+    //         if(abil.name === weapon.weaponType){
+    //             abil.exp++
+    //         } else
+    //         for(let i = 0; i < weapon.damageType; i++){
+    //             if(abil.name === weapon.damageType[i]){
+    //                 abil.exp++
+    //             }
+    //         }
+    //     }
         
-    })
+    // })
 
     return {
         type: GET_WEAPON_EXP,

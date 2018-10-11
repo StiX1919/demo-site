@@ -3,10 +3,6 @@ import React, {Component} from 'react'
 // import HeightBox from './HeightBox'
 
 class Pixel extends Component {
-    constructor(props){
-        super(props)
-
-    }
 //border exists only if size is 10px
     render(){
         return (

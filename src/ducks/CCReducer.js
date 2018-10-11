@@ -42,15 +42,15 @@ const initialState = {
 export function createNewHero(heroObj) {
     let luck = Math.floor(Math.random() * 10)
     console.log(luck, process.env)
-    if(luck == process.env.REACT_APP_STAGE_1_LUCK){
+    if(luck === process.env.REACT_APP_STAGE_1_LUCK){
         console.log('luck 1', luck)
         luck = Math.floor(Math.random() * 25)
     }
-    if(luck == process.env.REACT_APP_STAGE_2_LUCK){
+    if(luck === process.env.REACT_APP_STAGE_2_LUCK){
         console.log('luck 2', luck)
         luck = Math.floor(Math.random() * 50)
     }
-    if(luck == process.env.REACT_APP_STAGE_3_LUCK){
+    if(luck === process.env.REACT_APP_STAGE_3_LUCK){
         console.log('luck 3', luck)
         luck = Math.floor(Math.random() * 100)
     }
