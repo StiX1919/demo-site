@@ -1,0 +1,59 @@
+.background {
+    width: 100vw;
+    height: 90vh;
+}
+
+.title {
+    position: absolute;
+    text-align: left;
+    width: 400px;
+    top: 30%;
+    left: 70px;
+    
+}
+.name {
+    font-size: 70px;
+    margin-bottom: 20px
+}
+.job {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 40px
+}
+
+.socialLinks {
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    height: 60px;
+    margin: 0
+}
+
+
+#titleBreak {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+
+
+/* .my-social-icon {
+    color: #55acee;
+} */
+.my-social-icon {
+    color: #BBC7CC;
+}
+.facebook:hover {
+    color: #4267b2
+}
+.twitter:hover {
+    color: #1da1f2
+}
+.linkedIn:hover {
+    color: #0073b1
+}
+.gitHub:hover {
+    color: #000000
+}

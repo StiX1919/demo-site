@@ -22,35 +22,38 @@ class App extends Component {
 
   render() {
       
-    let navLinks = this.state.links.map((link, index) => {
-        return (
-            <Link key={index} to={`/${link}`}>
-                <h4 className='nav-link'>
-                    {link}
-                </h4>
-            </Link>
-        )
-    })
+    // let navLinks = this.state.links.map((link, index) => {
+    //     return (
+    //         <Link key={index} to={`/${link}`}>
+    //             <h4 className='nav-link'>
+    //                 {link}
+    //             </h4>
+    //         </Link>
+    //     )
+    // })
 
     return (
       <div className='App-header'>
             <img src='http://www.logodust.com/img/free/logo26.png ' className="App-logo" alt="logo" />
-            <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
-                <h1>Links</h1>
-                    
-                
-
-                <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}/>
-                <div className={this.state.menu ? 'dropdownMenu' : 'menu-Closed'}>
-                    {navLinks}
-                </div>
-            </div>
-            <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
-            >
-                {navLinks}
-            </div>
+            <h1>Links</h1>
+            
       </div>
     );
   }
 }
+
+// <div className="App-title" onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}>
+// <h1>Links</h1>
+    
+
+
+// <img className='hamBar' src='https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png' alt='MenuBar' onClick={() => this.openMenu((this.state.menu === null ? true : !this.state.menu))}/>
+// <div className={this.state.menu ? 'dropdownMenu' : 'menu-Closed'}>
+//     {navLinks}
+// </div>
+// </div>
+// <div className={this.state.menu === false ? 'art-links closing' : this.state.menu === true ? 'art-links opening' : 'art-links' }
+// >
+// {navLinks}
+// </div>
 export default App;
