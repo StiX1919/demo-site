@@ -1,0 +1,34 @@
+.tabs {
+    position: sticky;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around center;
+    align-items: center;
+
+    border: none;
+    bottom: 0
+}
+
+#titleBreak {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+.nav1 {
+    height: 100%;
+    width: 24.7vw;
+    border-right: solid black 3px
+}
+.midNav {
+    height: 100%;
+    width: 24.7vw;
+    border-right: solid black 3px
+}
+.finalNav {
+    height: 100%;
+    width: 24.7vw;
+    
+}

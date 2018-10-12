@@ -16,6 +16,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props.match)
     return (
       <Provider store={store}>
         <HashRouter>
@@ -23,6 +24,7 @@ class App extends Component {
             <Header />
             {mainRoutes}
             {GamesRouter}
+            <Footer />
           </div>
         </HashRouter>
       </Provider>

@@ -24,7 +24,6 @@ class Home extends Component {
             <SocialIcon className='my-social-icon gitHub' url='https://github.com/StiX1919' color='currentColor'/>
             </div>
           </div>
-          <Footer location='Home'/>
       </div>
     );
   }
