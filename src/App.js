@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {HashRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
 import Header from './components/Header/Header'
@@ -16,16 +15,18 @@ class App extends Component {
 
 
   render() {
+    console.log(window.location.pathname)
     return (
       <Provider store={store}>
-        <HashRouter>
           <div className="App">
             <Header />
             {mainRoutes}
             {GamesRouter}
+            {!window.location.pathname.includes('/Games') &&
+          
             <Footer />
+            }
           </div>
-        </HashRouter>
       </Provider>
     );
   }
