@@ -14,6 +14,8 @@ class Footer extends Component {
       }
     }
   
+
+    //note for notes sake
   
     render() {
         let location = window.location.pathname.split('/').join('')
