@@ -29,7 +29,7 @@ class Footer extends Component {
         return (
           <Link key={i} to={`/${link}`} className='footerLinks'>
             
-            <h1 style={location !== link ? {height: '10vh', backgroundColor: 'green', color: 'black'} : {color: 'white', border: 'none'}} className={i === 0 ? 'nav1' : i === this.state.links.length -1 ? 'finalNav' : 'midNav'}>{link}</h1>
+            <h1 style={location !== link ? null : {color: 'white', border: 'none', backgroundColor: 'none'}} className={i === 0 ? 'nav1' : i === this.state.links.length -1 ? 'finalNav' : 'midNav'}>{link}</h1>
           </Link>
         )
       })

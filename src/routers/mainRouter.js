@@ -10,7 +10,7 @@ import Projects from '../components/portfolio/Projects/Projects'
 
 export default (
         <Switch>
-            <Route exact path='/Games' component={Games}/>   
+            <Route exact path='/games' component={Games}/>   
             <Route path='/Projects' component={Projects}/> 
             <Route path='/Tech' component={Tech}/> 
             <Route path='/About' component={About}/>  

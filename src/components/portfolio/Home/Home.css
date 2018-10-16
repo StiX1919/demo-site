@@ -27,6 +27,14 @@
     margin-bottom: 40px
 }
 
+#titleBreak {
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+
 .socialLinks {
     display: flex;
     width: 300px;

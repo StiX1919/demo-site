@@ -22,7 +22,7 @@ class App extends Component {
             <Header />
             {mainRoutes}
             {GamesRouter}
-            {!window.location.pathname.includes('/Games') &&
+            {!window.location.pathname.includes('/games') &&
           
             <Footer />
             }
