@@ -11,8 +11,8 @@ class Home extends Component {
   render() {
   
     return (
-      <div>
-        <img className='background' src='https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-HD-wallpaper-backgrounds-PIC-WPD0013526.jpg' alt='main-pic'/>
+      <div className='homePage'>
+        <img className='background' src='https://i2.wp.com/bydawnnicole.com/wp-content/uploads/2016/07/cool-wave-tech-background.jpg?ssl=1' alt='main-pic'/>
         <div className='title'>
           <h1 className='name'>Spencer Smith</h1>
           <h3 className='job'>Full Stack Web Developer</h3>

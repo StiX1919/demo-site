@@ -1,6 +1,12 @@
+.homePage {
+    width: 100vw;
+    height: 99%;
+}
+
 .background {
     width: 100vw;
-    height: 90vh;
+    height: 100%;
+    
 }
 
 .title {

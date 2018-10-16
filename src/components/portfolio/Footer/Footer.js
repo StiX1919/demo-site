@@ -19,14 +19,17 @@ class Footer extends Component {
   
     render() {
         let location = window.location.pathname.split('/').join('')
+        if(location === ''){
+            location = 'Home'
+        }
         console.log(location)
 
       let links = this.state.links.map((link, i) => {
   
         return (
-          <Link key={i} to={`/${link}`}>
+          <Link key={i} to={`/${link}`} className='footerLinks'>
             
-            <h1 style={location === link ? {height: '13vh', bottom: '0', color: 'yellow', backgroundColor: 'purple'}: null} className={i === 0 ? 'nav1' : i === this.state.links.length -1 ? 'finalNav' : 'midNav'}>{link}</h1>
+            <h1 style={location !== link ? {height: '10vh', backgroundColor: 'green', color: 'black'} : {color: 'white', border: 'none'}} className={i === 0 ? 'nav1' : i === this.state.links.length -1 ? 'finalNav' : 'midNav'}>{link}</h1>
           </Link>
         )
       })

@@ -1,0 +1,52 @@
+.tabs {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around center ;
+    align-items: flex-end;
+
+    border: none;
+    bottom: 0
+}
+
+#titleBreak {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+.nav1 {
+    height: 6vh;
+    width: 24.85vw;
+    border-right: solid black 1.5px;
+    border-top: solid black 3px;
+    border-top-right-radius: 15% 25%;
+    border-top-left-radius: 15% 25%;
+    
+    
+}
+.midNav {
+    height: 6vh;
+    width: 24.85vw;
+    border-top: solid black 3px;
+    border-left: solid black 1.5px;
+    border-right: solid black 1.5px;
+    border-top-right-radius: 15% 25%;
+    border-top-left-radius: 15% 25%;
+
+}
+.finalNav {
+    height: 6vh;
+    width: 24.85vw;
+    border-left: solid black 1.5px;
+    border-top: solid black 3px;
+    border-top-right-radius: 15% 25%;
+    border-top-left-radius: 15% 25%;
+
+}
+
+.footerLinks {
+    text-decoration: none
+}
