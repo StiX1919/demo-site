@@ -23,6 +23,6 @@ export default (
             <Route path='/games/MegaRPG/CreateCharacter' component={CreateCharacter}/>
             <Route path='/games/MegaRPG' component={MegaRPG}/>
             
-            <Route path='/Games/PixelArt' component={PixelArt}/>
+            <Route path='/games/PixelArt' component={PixelArt}/>
         </Switch>
     )

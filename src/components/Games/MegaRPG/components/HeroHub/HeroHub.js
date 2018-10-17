@@ -26,7 +26,7 @@ class HeroHub extends Component {
     this.props.getMap()
 
     if(!this.props.heroes[0]){
-        window.location.href= '/#/games/MegaRPG'
+        window.location.href= '/games/MegaRPG'
     } else
     this.props.getDungeons(this.props.currentHero.hero_id)
     
