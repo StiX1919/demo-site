@@ -4,6 +4,7 @@ import axios from "axios";
 //Action Constants
 
 const GET_MAP = "GET_MAP"
+const UPDATE_AREA = 'UPDATE_AREA'
 
 
 
@@ -25,13 +26,20 @@ const initialState = {
 //Action Creators
 
 
-export function getMap() {
+export function getMap(X, Y) {
+    console.log(X,Y)
     return {
         type: GET_MAP,
-        payload: axios.get(`/api/getMap/${initialState.mapX}/${initialState.mapY}`)
+        payload: axios.get(`/api/getMap/${X}/${Y}`)
     }
     
   }
+export function updateArea(X, Y) {
+    return {
+        type: UPDATE_AREA,
+        payload: {X, Y}
+    }
+}
 
 
 
@@ -52,6 +60,13 @@ export default function mapReducer(state=initialState, action) {
                 ...state,
                 isLoading: false,
                 areaMap: action.payload.data
+            }
+
+        case UPDATE_AREA:
+            return {
+                ...state,
+                mapX: action.payload.X,
+                mapY: action.payload.Y
             }
     
         default:

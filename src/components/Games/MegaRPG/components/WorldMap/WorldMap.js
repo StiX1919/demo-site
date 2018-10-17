@@ -4,7 +4,7 @@ import './WorldMap.css';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-
+import { getMap, updateArea } from '../../../../../ducks/mapReducer'
 
 
 class WorldMap extends Component {
@@ -27,14 +27,18 @@ class WorldMap extends Component {
     
   }
   componentDidMount(){
+      
       this.buildMap()
       this.refs.areaMap.focus()
   }
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.areaX !== this.state.areaX || prevState.areaY !== this.state.areaY){
+      const {areaX, areaY} = this.state
+    if(prevState.areaX !== areaX || prevState.areaY !== areaY){
       this.buildMap()
     }
   }
+
+
   buildMap(){
     let map = [];
     let currRow = [];
@@ -127,6 +131,8 @@ class WorldMap extends Component {
       
           if(this.state.currentX + 1 > this.state.areaX * 10) {
             this.setState({areaX: this.state.areaX + 1})
+            this.props.getMap(this.state.areaX + 1, this.state.areaY)
+            this.props.updateArea(this.state.areaX + 1, this.state.areaY)
           }
           break;
       case 'ArrowLeft':
@@ -134,6 +140,8 @@ class WorldMap extends Component {
 
           if(this.state.currentX - 1 < ((this.state.areaX - 1) * 10) + 1) {
             this.setState({areaX: this.state.areaX - 1})
+            this.props.getMap(this.state.areaX - 1, this.state.areaY)
+            this.props.updateArea(this.state.areaX - 1, this.state.areaY)
           }
           break;
       case 'ArrowUp':
@@ -141,6 +149,8 @@ class WorldMap extends Component {
 
           if(this.state.currentY + 1 > this.state.areaY * 10) {
             this.setState({areaY: this.state.areaY + 1})
+            this.props.getMap(this.state.areaX, this.state.areaY + 1)
+            this.props.updateArea(this.state.areaX, this.state.areaY + 1)
           }
           break;
       case 'ArrowDown':
@@ -148,6 +158,8 @@ class WorldMap extends Component {
           
           if(this.state.currentY - 1 < ((this.state.areaY - 1) * 10) + 1) {
             this.setState({areaY: this.state.areaY - 1})
+            this.props.getMap(this.state.areaX, this.state.areaY - 1)
+            this.props.updateArea(this.state.areaX, this.state.areaY - 1)
           }
           break;
       default: return null
@@ -184,4 +196,4 @@ class WorldMap extends Component {
 
 const mapStateToProps = state => ({...state.heroReducer, ...state.mapReducer})
 
-export default withRouter(connect(mapStateToProps)(WorldMap));
+export default withRouter(connect(mapStateToProps, { getMap, updateArea })(WorldMap));
