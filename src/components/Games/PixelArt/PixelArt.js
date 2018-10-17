@@ -135,7 +135,7 @@ class PixelArt extends Component {
     return (
       <div className="PixelArt">
 
-        <Link to='/Games'><h1>Back to Games</h1></Link>
+        <Link to='/games'><h1>Back to Games</h1></Link>
         
         <div className='colorChooser'>
 

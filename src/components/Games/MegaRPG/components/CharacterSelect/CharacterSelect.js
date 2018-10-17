@@ -25,7 +25,7 @@ class CharacterSelect extends Component {
         let heroCards = (<h2>No heroes yet</h2>)
         if(this.props.heroes[0]) {
             heroCards = this.props.heroes.map((hero, ind) => {
-                return  <Link to={`/Games/MegaRPG/hero/${hero.hero_id}`} onClick={() => this.props.selectHero(hero)}>
+                return  <Link to={`/games/MegaRPG/hero/${hero.hero_id}`} onClick={() => this.props.selectHero(hero)}>
                             <CaSeCard hero={hero} />
                         </Link>
             })
@@ -35,7 +35,7 @@ class CharacterSelect extends Component {
                 <Link to='/poop'><h1>ChooseCharacter</h1></Link>
                 {heroCards}
                 {this.props.isLoading !== true && this.props.heroes.length < 5 &&
-                    <Link to ='/Games/MegaRPG/CreateCharacter'><button>Create new character</button></Link>
+                    <Link to ='/games/MegaRPG/CreateCharacter'><button>Create new character</button></Link>
                 }
                 
             </div>

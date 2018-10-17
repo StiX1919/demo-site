@@ -6,6 +6,7 @@ import {Route, Switch} from 'react-router-dom'
 import MegaRPG from '../components/Games/MegaRPG/Landing'
 import CreateCharacter from '../components/Games/MegaRPG/components/CreateCharacter/CreateCharacter'
 import CharacterSelect from '../components/Games/MegaRPG/components/CharacterSelect/CharacterSelect'
+import WorldMap from '../components/Games/MegaRPG/components/WorldMap/WorldMap'
 // import AdventureScreen from '../components/Games/MegaRPG/components/AdventureScreen/AdventureScreen'
 import HeroHub from '../components/Games/MegaRPG/components/HeroHub/HeroHub'
 
@@ -16,11 +17,11 @@ import PixelArt from '../components/Games/PixelArt/PixelArt'
 
 export default (
         <Switch>
-            <Route path='/Games/MegaRPG/hero/:heroID' component={HeroHub} /> 
-                                                        {/*change ^^^^ to heroHub*/}
-            <Route path='/Games/MegaRPG/CharacterSelect' component={CharacterSelect}/>
-            <Route path='/Games/MegaRPG/CreateCharacter' component={CreateCharacter}/>
-            <Route path='/Games/MegaRPG' component={MegaRPG}/>
+            <Route path='/games/MegaRPG/Map' component={WorldMap} />         
+            <Route path='/games/MegaRPG/hero/:heroID' component={HeroHub} /> 
+            <Route path='/games/MegaRPG/CharacterSelect' component={CharacterSelect}/>
+            <Route path='/games/MegaRPG/CreateCharacter' component={CreateCharacter}/>
+            <Route path='/games/MegaRPG' component={MegaRPG}/>
             
             <Route path='/Games/PixelArt' component={PixelArt}/>
         </Switch>

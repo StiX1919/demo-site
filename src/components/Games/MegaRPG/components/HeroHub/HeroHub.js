@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import './HeroHub.css';
 
 import CharacterBox from '../AdventureScreen/AScomponents/CharacterBox/CharacterBox'
 
 import {getDungeons} from '../../../../../ducks/heroReducer'
+import { getMap } from '../../../../../ducks/mapReducer'
 
 
 class HeroHub extends Component {
@@ -22,8 +23,10 @@ class HeroHub extends Component {
 
   }
   componentDidMount() {
+    this.props.getMap()
+
     if(!this.props.heroes[0]){
-        window.location.href= '/#/Games/MegaRPG'
+        window.location.href= '/#/games/MegaRPG'
     } else
     this.props.getDungeons(this.props.currentHero.hero_id)
     
@@ -58,10 +61,9 @@ class HeroHub extends Component {
 
         <CharacterBox />
         {/*add location here*/}
-        <div>
-            <h1>Available Dungeons</h1>
-            {dungs}
-        </div>
+        <Link to='/games/MegaRPG/Map'>
+          <button onClick={ this.openMap }>Open Map</button>
+        </Link>
 
     </div>
     );
@@ -70,4 +72,4 @@ class HeroHub extends Component {
 // not today!
 const mapStateToProps = state => ({...state.heroReducer, ...state.userReducer})
 
-export default withRouter(connect(mapStateToProps, {getDungeons})(HeroHub));
+export default withRouter(connect(mapStateToProps, {getDungeons, getMap})(HeroHub));

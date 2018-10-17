@@ -29,7 +29,7 @@ let shop = []
 //             {name: 'Bracelet', pwr: 1, spd: 0, def: 1, price: 12, type: 'arms'}, 
 //             {name: 'High heels', pwr: 1, spd: 0, def: 1, price: 12, type: 'legs'}]
 
-const {getClasses, getRaces, createNewHero, getHeroes, demoHero, getDungeons} = require('./controllers/mainController.js')
+const {getClasses, getRaces, createNewHero, getHeroes, demoHero, getMap} = require('./controllers/mainController.js')
 
 //SAVED FOR BUILD
 //app.use(express.static(`${__dirname}/public/build`));
@@ -98,7 +98,7 @@ passport.deserializeUser(function(obj, done) {
 })
 
 app.get('/api/login', passport.authenticate('auth0', {
-        successRedirect: 'http://localhost:3000/#/Games/MegaRPG/CharacterSelect', 
+        successRedirect: 'http://localhost:3000/#/games/MegaRPG/CharacterSelect', 
         failureRedirect: `http://localhost:3001/login`
     }
 ))
@@ -140,7 +140,9 @@ app.get('/api/getRaces', getRaces)
 
 app.post('/api/newHero', createNewHero)
 
-app.get('/api/getDungeons', getDungeons)
+app.get('/api/getMap/:X/:Y', getMap)
+
+
 //LISTENING
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
