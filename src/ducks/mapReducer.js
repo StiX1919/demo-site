@@ -172,24 +172,24 @@ export function buildMap(locations, areaX, areaY){
             x_location,
             y_location
         }).then(res => {
-            spots.push({
-                area_name: undefined,
-                area_type: "Plain",
-                area_x,
-                area_y,
-                discovered_by,
-                x_location,
-                y_location
-            })
-            let builtMap = buildMap(spots, area_x, area_y)
-    
-            return {
-                type: DISCOVER,
-                payload: {spots, builtMap}
-            }
+            console.log(res)
         }).catch(err => console.log(err))
 
-        
+        spots.push({
+            area_name: undefined,
+            area_type: "Plain",
+            area_x,
+            area_y,
+            discovered_by,
+            x_location,
+            y_location
+        })
+        let builtMap = buildMap(spots, area_x, area_y)
+
+        return {
+            type: DISCOVER,
+            payload: {spots, builtMap}
+        }
     }
     return{
         type: 'none',
