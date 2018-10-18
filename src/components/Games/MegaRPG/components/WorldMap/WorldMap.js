@@ -4,7 +4,7 @@ import './WorldMap.css';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-import { getMap, updateArea } from '../../../../../ducks/mapReducer'
+import { getMap, updateArea, discover } from '../../../../../ducks/mapReducer'
 
 
 class WorldMap extends Component {
@@ -38,14 +38,36 @@ class WorldMap extends Component {
   move(e){
     switch(e.key){
       case 'ArrowRight':
-          this.setState({prevX: this.state.currentX, prevY: this.state.currentY, currentX: this.state.currentX + 1})
-      
-          if(this.state.currentX + 1 > this.state.areaX * 10) {
-            this.setState({areaX: this.state.areaX + 1})
-            this.props.getMap(this.state.areaX + 1, this.state.areaY)
-            this.props.updateArea(this.state.areaX + 1, this.state.areaY)
-          }
-          break;
+        this.setState({prevX: this.state.currentX, prevY: this.state.currentY, currentX: this.state.currentX + 1})
+        
+            if(this.state.currentX + 1 > this.state.areaX * 10) {
+                this.setState({areaX: this.state.areaX + 1})
+                this.props.getMap(this.state.areaX + 1, this.state.areaY)
+                this.props.updateArea(this.state.areaX + 1, this.state.areaY)
+
+             
+
+                    this.props.discover({
+                        area_x: this.state.areaX + 1,
+                        area_y: this.state.areaY,
+                        discovered_by: this.props.currentHero.hero_name,
+                        x_location: this.state.currentX + 1,
+                        y_location: this.state.currentY
+                    }, this.props.locations)
+            
+            } else {
+                
+                this.props.discover({
+                    area_x: this.state.areaX,
+                    area_y: this.state.areaY,
+                    discovered_by: this.props.currentHero.hero_name,
+                    x_location: this.state.currentX + 1,
+                    y_location: this.state.currentY
+                }, this.props.locations)
+            }
+        
+        break;
+
       case 'ArrowLeft':
           this.setState({prevX: this.state.currentX, prevY: this.state.currentY, currentX: this.state.currentX - 1})
 
@@ -53,7 +75,25 @@ class WorldMap extends Component {
             this.setState({areaX: this.state.areaX - 1})
             this.props.getMap(this.state.areaX - 1, this.state.areaY)
             this.props.updateArea(this.state.areaX - 1, this.state.areaY)
-          }
+
+            this.props.discover({
+                area_x: this.state.areaX - 1,
+                area_y: this.state.areaY,
+                discovered_by: this.props.currentHero.hero_name,
+                x_location: this.state.currentX - 1,
+                y_location: this.state.currentY
+            }, this.props.locations)
+    
+            } else {
+                
+                this.props.discover({
+                    area_x: this.state.areaX,
+                    area_y: this.state.areaY,
+                    discovered_by: this.props.currentHero.hero_name,
+                    x_location: this.state.currentX - 1,
+                    y_location: this.state.currentY
+                }, this.props.locations)
+            }
           break;
       case 'ArrowUp':
           this.setState({prevX: this.state.currentX, prevY: this.state.currentY, currentY: this.state.currentY + 1})
@@ -62,7 +102,25 @@ class WorldMap extends Component {
             this.setState({areaY: this.state.areaY + 1})
             this.props.getMap(this.state.areaX, this.state.areaY + 1)
             this.props.updateArea(this.state.areaX, this.state.areaY + 1)
-          }
+
+            this.props.discover({
+                area_x: this.state.areaX,
+                area_y: this.state.areaY + 1,
+                discovered_by: this.props.currentHero.hero_name,
+                x_location: this.state.currentX,
+                y_location: this.state.currentY + 1
+            }, this.props.locations)
+    
+            } else {
+                
+                this.props.discover({
+                    area_x: this.state.areaX,
+                    area_y: this.state.areaY,
+                    discovered_by: this.props.currentHero.hero_name,
+                    x_location: this.state.currentX,
+                    y_location: this.state.currentY + 1
+                }, this.props.locations)
+            }
           break;
       case 'ArrowDown':
           this.setState({prevX: this.state.currentX, prevY: this.state.currentY, currentY: this.state.currentY - 1})
@@ -71,7 +129,25 @@ class WorldMap extends Component {
             this.setState({areaY: this.state.areaY - 1})
             this.props.getMap(this.state.areaX, this.state.areaY - 1)
             this.props.updateArea(this.state.areaX, this.state.areaY - 1)
-          }
+
+            this.props.discover({
+                area_x: this.state.areaX,
+                area_y: this.state.areaY - 1,
+                discovered_by: this.props.currentHero.hero_name,
+                x_location: this.state.currentX,
+                y_location: this.state.currentY - 1
+            }, this.props.locations)
+    
+    } else {
+        
+        this.props.discover({
+            area_x: this.state.areaX,
+            area_y: this.state.areaY,
+            discovered_by: this.props.currentHero.hero_name,
+            x_location: this.state.currentX,
+            y_location: this.state.currentY - 1
+        }, this.props.locations)
+    }
           break;
       default: return null
     }
@@ -107,4 +183,4 @@ class WorldMap extends Component {
 
 const mapStateToProps = state => ({...state.heroReducer, ...state.mapReducer})
 
-export default withRouter(connect(mapStateToProps, { getMap, updateArea })(WorldMap));
+export default withRouter(connect(mapStateToProps, { getMap, updateArea, discover })(WorldMap));

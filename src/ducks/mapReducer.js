@@ -8,7 +8,7 @@ const UPDATE_AREA = 'UPDATE_AREA'
 
 const BUILD_MAP = "BUILD_MAP"
 const MOVE = 'MOVE'
-
+const DISCOVER = 'DISCOVER'
 
 
 //Initial State
@@ -55,11 +55,11 @@ export function buildMap(locations, areaX, areaY){
             case 'Town': 
                 return 'grey';
             case 'Plain': 
-                return 'light green';
+                return 'green';
             case 'Forest': 
-                return 'forest green';
+                return 'brown';
             case 'Water':
-                return 'light blue'
+                return 'blue'
             default: return 'white'
         }
       }
@@ -134,7 +134,72 @@ export function buildMap(locations, areaX, areaY){
     return areaMap
   }
 
-  
+  export function discover(discObj, discovered) {
+      
+    //   let newMap = theMap.slice().map(row => {
+    //       row.map(spot => {
+    //             if(X === spot.x && Y === spot.y){
+    //             console.log('New Location!')
+    //             return {
+    //                 x: spot.x, 
+    //                 y: spot.y,
+    //                 type: 'Plain',
+    //                 name: undefined,
+    //                 discovered_by: undefined
+    //             }
+    //             } else {
+    //                 return spot
+    //             }
+    //         })
+    //     })
+    //     console.log(newMap)
+    const {area_x, area_y, discovered_by, x_location, y_location} = discObj
+    let exists = false;
+    let spots = discovered.slice()
+    spots.map(spot => {
+        if(spot.x_location === x_location && spot.y_location === y_location){
+            console.log('is true')
+            return exists = true
+        }
+    })
+    if(exists === false){
+        axios.post('/api/newPlace', {
+            area_name: 'none',
+            area_type: "Plain",
+            area_x,
+            area_y,
+            discovered_by,
+            x_location,
+            y_location
+        }).then(res => {
+            spots.push({
+                area_name: undefined,
+                area_type: "Plain",
+                area_x,
+                area_y,
+                discovered_by,
+                x_location,
+                y_location
+            })
+            let builtMap = buildMap(spots, area_x, area_y)
+    
+            return {
+                type: DISCOVER,
+                payload: {spots, builtMap}
+            }
+        }).catch(err => console.log(err))
+
+        
+    }
+    return{
+        type: 'none',
+        payload: null
+    }
+
+        
+  }
+
+
 // might change move functionality location
 
 //   export function move(e){
@@ -234,6 +299,13 @@ export default function mapReducer(state=initialState, action) {
             return {
                 ...state,
                 areaMap: action.payload
+            }
+
+        case DISCOVER:
+            return {
+                ...state,
+                areaMap: action.payload.builtMap,
+                locations: action.payload.spots
             }
         default:
             return state
