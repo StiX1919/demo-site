@@ -1,13 +1,13 @@
 
-module.exports = {
-    getClasses: (req, res) => {
+
+    getClasses = (req, res) => {
       const dbInstance = req.app.get("db");
   
       dbInstance.getClasses().then(response => {
           return res.status(200).json(response)
       }).catch(console.log)
     },
-    getRaces: (req, res) => {
+    getRaces = (req, res) => {
         const dbInstance = req.app.get("db");
     
         dbInstance.getRaces().then(response => {
@@ -15,7 +15,7 @@ module.exports = {
         }).catch(console.log)
     },
 
-    createNewHero: (req, res) => {
+    createNewHero = (req, res) => {
         
         const {name, heroClass, stats, luck} = req.body
         const dbInstance = req.app.get('db');
@@ -68,7 +68,7 @@ module.exports = {
 
     },
 
-    getHeroes: (req, res) => {
+    getHeroes = (req, res) => {
         // const dbInstance = ;
         console.log(req.session.passport)
         req.app.get('db').getHeroes(req.session.passport.user.user_id).then(response => {
@@ -77,7 +77,7 @@ module.exports = {
         }).catch(console.log)
     },
 
-    demoHero: (req, res) => {
+    demoHero = (req, res) => {
         req.app.get('db').getDemo()
         .then(response => {
             res.status(200).json(response)
@@ -85,17 +85,26 @@ module.exports = {
         .catch(err => console.log(err))
     },
 
-    getMap: (req, res) => {
+    getMap = (req, res) => {
         req.app.get('db').getMap([req.params.X, req.params.Y])
         .then( response => {
             console.log(response)
             res.status(200).json(response)
         })
     },
-    newPlace: (req, res) => {
+    newPlace = (req, res) => {
         const {
             area_name, area_type, area_x, area_y, discovered_by, x_location, y_location
         } = req.body
         req.app.get('db').newPlace([area_name, area_type, area_x, area_y, discovered_by, x_location, y_location])
     }
+
+module.exports = {
+    getClasses,
+    getRaces,
+    createNewHero,
+    getHeroes,
+    demoHero,
+    getMap,
+    newPlace
 }
