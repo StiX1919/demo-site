@@ -22,107 +22,18 @@ class WorldMap extends Component {
 
       map:[]
     }
-    this.buildMap = this.buildMap.bind(this)
     this.move = this.move.bind(this)
     
   }
   componentDidMount(){
-      
-      this.buildMap()
       this.refs.areaMap.focus()
   }
-  componentDidUpdate(prevProps, prevState) {
-      const {areaX, areaY} = this.state
-    if(prevState.areaX !== areaX || prevState.areaY !== areaY){
-      this.buildMap()
-    }
-  }
-
-
-  buildMap(){
-    let map = [];
-    let currRow = [];
-    console.log(this.props.areaMap)
-    for(let row = this.state.areaY * 10, col = -9 + (this.state.areaX * 10); row > -10 + (this.state.areaY * 10); col++){
-    
-        let discovered = this.props.areaMap.filter(spot => {
-            return spot.x_location === col && spot.y_location === row
-        })
-        if(!discovered[0]){
-            discovered = null
-        }
-
-      if(col === 10 * this.state.areaX){
-        if(discovered !== null){
-            let color = this.colorGen(discovered[0].area_type)
-            console.log(discovered[0].area_type, color)
-
-
-            currRow.push({
-                x: discovered[0].x_location,
-                y: discovered[0].y_location,
-                type: discovered[0].area_type,
-                name: discovered[0].area_name,
-                discovered_by: discovered[0].discovered_by,
-                color
-            })
-            map.push(currRow)
-            
-            currRow = []
-            
-            col = -10 + (this.state.areaX * 10);
-            row--
-        } else {
-            currRow.push({x: col, y: row});
-            map.push(currRow)
-    
-            currRow = []
-    
-            col = -10 + (this.state.areaX * 10);
-            row--
-        }
-      } else {
-          if(discovered !== null){
-            let color = this.colorGen(discovered[0].area_type)
-            
-            console.log(discovered[0].area_type, color)
-
-            currRow.push({
-                x: discovered[0].x_location,
-                y: discovered[0].y_location,
-                type: discovered[0].area_type,
-                name: discovered[0].area_name,
-                discovered_by: discovered[0].discovered_by,
-                color
-            })
-          } else {
-              currRow.push({
-                  x: col, 
-                  y: row,
-                  type: undefined,
-                  name: undefined,
-                  discovered_by: undefined
-                })
-
-          }
-      }
-    }
-    this.setState({map: map})
-  }
-
-  colorGen(place) {
-    switch(place){
-        case 'Town': 
-            return 'grey';
-        case 'Plain': 
-            return 'light green';
-        case 'Forest': 
-            return 'forest green';
-        case 'Water':
-            return 'light blue'
-        default: return 'white'
-    }
-  }
+//   componentDidUpdate(prevProps, prevState) {
+//       const {areaX, areaY} = this.state
+//     if(prevState.areaX !== areaX || prevState.areaY !== areaY){
+//       this.buildMap()
+//     }
+//   }
 
   move(e){
     switch(e.key){
@@ -170,8 +81,8 @@ class WorldMap extends Component {
       console.log(this.props)
     return (
       <div ref='areaMap' onKeyDown={this.move} tabIndex='-1'>
-        {this.state.map[0] && 
-          this.state.map.map((row, r) => {
+        {this.props.areaMap[0] && 
+          this.props.areaMap.map((row, r) => {
             return (
               <div className='row'>
               {row.map((spot, j) => {

@@ -35,7 +35,7 @@ class CharacterBox extends Component {
 
     async setHero(hero, direction, statType) {
         try {
-            await this.props.statModifier(hero, direction, statType)
+            // await this.props.statModifier(hero, direction, statType)
             await this.setState({hero: this.props.currentHero, equipment: this.props.currentEquipment})
         } catch(err) {
             console.log(err)

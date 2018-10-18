@@ -6,7 +6,6 @@ import './HeroHub.css';
 
 import CharacterBox from '../AdventureScreen/AScomponents/CharacterBox/CharacterBox'
 
-import {getDungeons} from '../../../../../ducks/heroReducer'
 import { getMap } from '../../../../../ducks/mapReducer'
 
 
@@ -27,8 +26,7 @@ class HeroHub extends Component {
 
     if(!this.props.heroes[0]){
         window.location.href= '/games/MegaRPG'
-    } else
-    this.props.getDungeons(this.props.currentHero.hero_id)
+    }
     
   }
 
@@ -72,4 +70,4 @@ class HeroHub extends Component {
 // not today!
 const mapStateToProps = state => ({...state.heroReducer, ...state.userReducer, ...state.mapReducer})
 
-export default withRouter(connect(mapStateToProps, {getDungeons, getMap})(HeroHub));
+export default withRouter(connect(mapStateToProps, { getMap })(HeroHub));
