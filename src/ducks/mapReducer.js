@@ -29,7 +29,7 @@ const initialState = {
 
 //Action Creators
 
-
+//need to get locations from db before map is built when area is changed
 export function getMap(X, Y) {
         return {
             type: GET_MAP,
