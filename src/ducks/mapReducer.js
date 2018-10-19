@@ -33,10 +33,12 @@ const initialState = {
 export function getMap(X, Y) {
         return {
             type: GET_MAP,
-            payload: axios.get(`/api/getMap/${X}/${Y}`).then(response => {
-                let builtMap = buildMap(response.data, X, Y)
-                return {locations: response.data, builtMap}
-            })
+            payload: axios.get(`/api/getMap/${X}/${Y}`)
+                .then(response => {
+                    let builtMap = buildMap(response.data, X, Y)
+
+                    return {locations: response.data, builtMap}
+                })
         }
     
     
@@ -302,6 +304,7 @@ export default function mapReducer(state=initialState, action) {
             }
 
         case DISCOVER:
+
             return {
                 ...state,
                 areaMap: action.payload.builtMap,

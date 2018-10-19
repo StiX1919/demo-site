@@ -43,6 +43,7 @@ class HeroHub extends Component {
   }
 
   render() {
+    console.log(this.props.match.params)
 
     let dungs = <h3>Scouting</h3>;
 

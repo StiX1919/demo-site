@@ -154,7 +154,7 @@ class WorldMap extends Component {
   }
 
   render() {
-      console.log(this.props)
+      console.log(this.props.match.params)
     return (
       <div ref='areaMap' onKeyDown={this.move} tabIndex='-1'>
         {this.props.areaMap[0] && 

@@ -31,9 +31,9 @@ let shop = []
 
 const {getClasses, getRaces, createNewHero, getHeroes, demoHero, getMap, newPlace} = require('./controllers/mainController.js')
 
-//SAVED FOR BUILD
-//app.use(express.static(`${__dirname}/public/build`));
-//
+// SAVED FOR BUILD
+// app.use(express.static(`${__dirname}/public/build`));
+
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
