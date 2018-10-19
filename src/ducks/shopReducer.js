@@ -25,7 +25,6 @@ export function getShop() {
 }
 
 export function purchaseItem(item, oldInv, cost, oldGold) {
-    console.log(item, oldInv, cost)
     let newInv = oldInv
     let newGold = oldGold
 

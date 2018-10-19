@@ -21,7 +21,6 @@ class CharacterSelect extends Component {
       }
 
     render() {
-        console.log(this.props.heroes)
         let heroCards = (<h2>No heroes yet</h2>)
         if(this.props.heroes[0]) {
             heroCards = this.props.heroes.map((hero, ind) => {

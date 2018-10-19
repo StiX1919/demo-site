@@ -13,7 +13,6 @@ class MonsterBox extends Component {
     }
 
     render() {
-        console.log(this.state.monster, 'monbox', this.props.currentMonster)
         return (
             <div>
                 {this.props.currentMonster &&

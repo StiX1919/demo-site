@@ -27,7 +27,6 @@ export function getMonster() {
     return {
         type: GET_MONSTER,
         payload: axios.get('/api/getMonster').then(response => {
-            console.log(response.data)
             return response.data
             // this.setState({currentMonster: response.data, currentMonsterHP: response.data.HP, monsterStatus: 'alive', exp: currExp})
             

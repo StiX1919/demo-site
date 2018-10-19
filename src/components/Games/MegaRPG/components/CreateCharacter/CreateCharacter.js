@@ -21,12 +21,10 @@ class CreateCharacter extends Component {
     }
 
     changeHandler(input) {
-      console.log(input.target.name)
         this.setState({[input.target.name]: input.target.value})
     }
 
     chooseStats(dir, ind){
-      console.log(dir)
       let newStats = this.props.stats.slice()
       if(dir === '>'){
         this.setState({startingStats: this.state.startingStats - 1})
@@ -64,7 +62,6 @@ class CreateCharacter extends Component {
           </div>
         )
       })
-      console.log(this.props.stats, this.state.startingStats)
         return (
             <div className='hero_Creation_Component'>
                 <div>

@@ -24,7 +24,6 @@ class Shop extends Component {
       
 
     render() {
-        console.log(this.props.shopItems)
         let shopItems = <h3>Loading...</h3>
 
         if (this.props.shopItems[0]){

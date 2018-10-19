@@ -51,7 +51,6 @@ class AtkInterface extends Component {
     
     let newMon = Object.assign({}, monster, {HP: newHP})
     this.setState({damageDone: damage})
-    console.log(damage, crit, critNum, bonus, luckFactor)
     this.showDamageDone()
     this.props.attack(newMon)
   }

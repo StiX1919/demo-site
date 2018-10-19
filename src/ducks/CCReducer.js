@@ -41,21 +41,16 @@ const initialState = {
 
 export function createNewHero(heroObj) {
     let luck = Math.floor(Math.random() * 10)
-    console.log(luck, process.env)
     if(luck === process.env.REACT_APP_STAGE_1_LUCK){
-        console.log('luck 1', luck)
         luck = Math.floor(Math.random() * 25)
     }
     if(luck === process.env.REACT_APP_STAGE_2_LUCK){
-        console.log('luck 2', luck)
         luck = Math.floor(Math.random() * 50)
     }
     if(luck === process.env.REACT_APP_STAGE_3_LUCK){
-        console.log('luck 3', luck)
         luck = Math.floor(Math.random() * 100)
     }
     let newObj = {...heroObj, stats: initialState.stats}
-    console.log(newObj,luck)
     return {
         type: NEW_HERO,
         payload: axios.post('/api/newHero', {...newObj, luck})
@@ -82,7 +77,6 @@ export default function CCReducer(state=initialState, action) {
                 isLoading: true
             }
         case GET_CLASSES + "_FULFILLED":
-            console.log('payload', action.payload)
             return {
                 ...state,
                 isLoading: false,
@@ -94,7 +88,6 @@ export default function CCReducer(state=initialState, action) {
                 isLoading: true
             }
         case GET_RACES + "_FULFILLED":
-            console.log('payload', action.payload)
             return {
                 ...state,
                 isLoading: false,

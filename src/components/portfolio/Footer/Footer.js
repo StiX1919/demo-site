@@ -22,7 +22,6 @@ class Footer extends Component {
         if(location === ''){
             location = 'Home'
         }
-        console.log(location)
 
       let links = this.state.links.map((link, i) => {
   

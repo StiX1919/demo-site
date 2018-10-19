@@ -15,7 +15,6 @@ class App extends Component {
 
 
   render() {
-    console.log(window.location.pathname)
     return (
       <Provider store={store}>
           <div className="App">

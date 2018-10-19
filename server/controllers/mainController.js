@@ -28,7 +28,6 @@
             //change 1 to userId
         ])
         .then(response => {
-            console.log(response)
             let HP = (stats[0].value + stats[2].value)*2
             let SP = (stats[1].value + stats[3].value)
             let MP = stats[3].value + luck
@@ -46,7 +45,6 @@
                 0,
                 0
             ]).then(statResponse => {
-                console.log(statResponse);
                 res.sendStatus(200)
             }).catch(statErr => {
                 console.log('stats error', statErr)
@@ -69,12 +67,9 @@
     },
 
     getHeroes = (req, res) => {
-        // const dbInstance = ;
-        console.log(req.session.passport)
         req.app.get('db').getHeroes(req.session.passport.user.user_id).then(response => {
-            console.log('hero response', response)
             res.status(200).json(response)
-        }).catch(console.log)
+        }).catch(err => console.log(err))
     },
 
     demoHero = (req, res) => {
@@ -88,7 +83,6 @@
     getMap = (req, res) => {
         req.app.get('db').getMap([req.params.X, req.params.Y])
         .then( response => {
-            console.log(response)
             res.status(200).json(response)
         })
     },

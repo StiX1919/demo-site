@@ -54,7 +54,6 @@ export function getDungeons(id){
 
 //grants weapon abilities and experience
 export function getWeaponExp(weapon, abilities) {
-    console.log(weapon)
     // let newAbils = abilities.map(abil => {
     //     if(abilities[0]){
     //         if(abil.name === weapon.weaponType){
@@ -105,7 +104,6 @@ export function beatMonster(mon, currExp, currGold) {
 export function equipGear(item, CE) {
     let newObj = CE
     newObj[item.type] = item
-    console.log(newObj, 'testData')
     return {
         type: EQUIP_GEAR,
         payload: newObj
@@ -115,7 +113,6 @@ export function equipGear(item, CE) {
 export function selectHero(hero) {
 
     let nextLevel = hero.hero_level * 100
-    console.log('gotHero', hero)
     return {
         type: SELECT_HERO,
         payload: {hero, nextLevel}
@@ -127,14 +124,12 @@ export function getShop() {
     return {
         type: GET_SHOP,
         payload: axios.get('/api/getShop').then(response => {
-            console.log(response.data)
             return response.data
         })
     }
 }
 
 export function purchaseItem(item, oldInv, cost, oldGold) {
-    console.log(item, oldInv, cost)
     let newInv = oldInv
     let newGold = oldGold
 

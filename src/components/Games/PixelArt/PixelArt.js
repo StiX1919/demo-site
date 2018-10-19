@@ -41,7 +41,6 @@ class PixelArt extends Component {
   }
   
   modifyPixels(){
-    console.log('hello')
     let oldArr = this.state.pixelArr.slice()
     let pixelArr = []
     
@@ -51,7 +50,6 @@ class PixelArt extends Component {
             let matchArr = oldArr.filter(item => (item.cInd === c && item.rInd === r))
             if(c < this.state.width){
               if(matchArr[0] && matchArr[0].color !== '#FFFFFF'){
-                console.log(matchArr, 'matched')
                 pixelArr.push(Object.assign({}, matchArr[0], {cInd: c, rInd: r}))
                 c++
               } else {
@@ -73,13 +71,11 @@ class PixelArt extends Component {
               pixelArr.push({cInd: c, rInd: r, color: '#FFFFFF', opacity: 1})
             }
           }
-        console.log(oldArr, pixelArr)
     
         this.setState({pixelArr})
   }
 
   handleColorChange(e){
-    console.log(e)
     this.setState({reactColor: e.rgb, color: e.hex, opacity: e.rgb.a})
 
     // grab transparancy. at e.rgb.a. is 1 or less
@@ -116,7 +112,6 @@ class PixelArt extends Component {
 
 
   async updateTable(event){
-    console.log(event.key)
     if(event.key === 'Enter'){
       await this.setState({width: this.state.newWidth, height: this.state.newHeight})
       this.modifyPixels()
@@ -130,7 +125,6 @@ class PixelArt extends Component {
   
 
   render() {
-    console.log(this.state)
 
     return (
       <div className="PixelArt">

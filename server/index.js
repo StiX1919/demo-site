@@ -65,18 +65,14 @@ passport.use(
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     
-    console.log(profile)
     app.get('db').getUserByAuthId([profile.id]).then(response => {
-        console.log(response, 'login response')
 
         if(!response[0]) {
-            console.log(profile.id)
             app.get('db').createUserByAuthId([profile.id, 'email'])
             .then(created => {
                 return done(null, created[0])
             })
         } else {
-            console.log('hit!', response[0])
             return done(null, response[0])
             
         }
@@ -116,7 +112,6 @@ app.get('/api/getShop', (req, res) => {
 
   dbInstance.getShopItems().then( response => {
     let newRes = response.map(item =>{
-      console.log(item.stat_mod)
       
       return item
     })
