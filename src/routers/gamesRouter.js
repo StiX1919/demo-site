@@ -14,8 +14,6 @@ import HeroHub from '../components/Games/MegaRPG/components/HeroHub/HeroHub'
 import PixelArt from '../components/Games/PixelArt/PixelArt'
 
 // import Games from '../components/Games/Games'
-// might recombine routers
-
 export default (
         <Switch>
             <Route path='/games/MegaRPG/Map' component={WorldMap} />         
