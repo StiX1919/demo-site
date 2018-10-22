@@ -14,6 +14,9 @@ import HeroHub from '../components/Games/MegaRPG/components/HeroHub/HeroHub'
 import PixelArt from '../components/Games/PixelArt/PixelArt'
 
 // import Games from '../components/Games/Games'
+
+
+//work on getting the map update call to work before the transition to a new area today
 export default (
         <Switch>
             <Route path='/games/MegaRPG/Map' component={WorldMap} />         
